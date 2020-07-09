@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('siswa', 'UserController@index');
+
 Route::get('/', function () {
     return view('welcome');
 });
