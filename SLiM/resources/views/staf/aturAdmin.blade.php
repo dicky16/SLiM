@@ -61,6 +61,7 @@
           </div>
         </div>
         <div class="row">
+
           <table class="table">
               <thead class="thead-dark">
                 <tr>
@@ -74,18 +75,22 @@
                 </tr>
               </thead>
               <tbody>
+                <?php $i = 1; ?>
                 @foreach ($data as $dt)
                 <tr>
-                  <th scope="row">1</th>
+                  <th scope="row">{{$i}}</th>
                   <td>{{$dt->name}}</td>
                   <td>Otto</td>
                   <td>@mdo</td>
                   <td>{{$dt->email}}</td>
-                  <td>{{$dt->password}}</td>
-                  <td><button class="btn btn-danger"><i class="fa fa-trash"></i></button> |
-                    <button class="btn btn-success"><i class="far fa-edit"></i></button></td>
-                  @endforeach
+                  <td>-</td>
+                  <td>
+                    <a href="delete/{{ $dt->id}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a> |
+                    <a href=""><button class="btn btn-success"><i class="far fa-edit"></i></button></a>
+                  </td>
                 </tr>
+                <?php $i++; ?>
+                @endforeach
               </tbody>
             </table>
 
@@ -94,4 +99,9 @@
 
   </div>
 </div>
+@if($msg = Session::get('delete'))
+<script type="text/javascript">
+  alert('{{ $msg }}')
+</script>
+@endif
 @endsection

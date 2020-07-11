@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="col-6">
-            <button class="btn btn-primary float-right"><i class="fas fa-plus"></i></button>
+            <a href="add"><button class="btn btn-primary float-right"><i class="fas fa-plus"></i></button></a>
           </div>
         </div>
         <div class="row">
@@ -75,29 +75,21 @@
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
+                  <?php $i = 1; ?>
+                  @foreach($data as $dt)
+                  <th scope="row">{{$i}}</th>
+                  <td>{{$dt->name}}</td>
+                  <td>kelas</td>
                   <td>@mdo</td>
-                  <td>Email</td>
-                  <td>Email</td>
-                  <td><button class="btn btn-danger"><i class="fa fa-trash"></i></button> | <button class="btn btn-success"><i class="far fa-edit"></i></button></td>
+                  <td>{{$dt->email}}</td>
+                  <td>pass</td>
+                  <td>
+                    <a href="delete/{{ $dt->id}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a> |
+                    <a href=""><button class="btn btn-success"><i class="far fa-edit"></i></button></a>
+                  </td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <td>ok</td>
-                </tr>
+                <?php $i++; ?>
+                @endforeach
               </tbody>
             </table>
 

@@ -9,6 +9,16 @@ class LoginController extends Controller
 {
   public function login()
   {
+    if(Auth::user()) {
+      $role = Auth::user()->level;
+      if($role == "admin") {
+        return redirect('staf');
+      } else if($role == "guru") {
+        return 'guru';
+      } else if($role == "siswa") {
+        return 'siswa';
+      }
+    }
     return view('login');
   }
 
@@ -26,5 +36,10 @@ class LoginController extends Controller
     } else {
       return redirect()->back();
     }
+  }
+  public function logout()
+  {
+    Auth::logout();
+    return redirect('login');
   }
 }

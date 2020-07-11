@@ -27,34 +27,48 @@ class StafController
         return $key;
     }
 
-    public function setStatus(Request $request)
+    public function setAc()
     {
-      $status = $request->input('jenis');
-      if(!$status) {
-        return response(['status' => 'invalid']);
-      }
-      if($status == 'ac') {
-        session(['statusAc' => 'checked']);
-        return response(['status' => '1']);
-      } else if($status == 'ld') {
-        session(['statusLd' => 'checked']);
-        return response(['status' => '1']);
-      }
-
+      session(['statusAc' => 'checked']);
+      return redirect('staf');
     }
-    public function destroyStatus(Request $request)
+    public function delAc()
     {
-      $status = $request->input('jenis');
-      if(!$status) {
-        return response(['status' => 'invalid']);
-      }
-      if($status == 'ac') {
-        session(['statusAc' => 'unchecked']);
-        return response(['status' => '0']);
-      } else if($status == 'ld') {
-        session(['statusLd' => 'unchecked']);
-        return response(['status' => '0']);
-      }
+      session(['statusAc' => 'unchecked']);
+      return redirect('staf');
+    }
+    //lampu depan
+    public function setLD()
+    {
+      session(['statusLd' => 'checked']);
+      return redirect('staf');
+    }
+    public function delLD()
+    {
+      session(['statusLd' => 'unchecked']);
+      return redirect('staf');
+    }
+    //lampu tengah
+    public function setLT()
+    {
+      session(['statusLt' => 'checked']);
+      return redirect('staf');
+    }
+    public function delLT()
+    {
+      session(['statusLt' => 'unchecked']);
+      return redirect('staf');
+    }
+    //lampu belakang
+    public function setLB()
+    {
+      session(['statusLb' => 'checked']);
+      return redirect('staf');
+    }
+    public function delLB()
+    {
+      session(['statusLb' => 'unchecked']);
+      return redirect('staf');
     }
 
     public function getAddUSer()
@@ -64,32 +78,40 @@ class StafController
 
     public function addUser(Request $request)
     {
-      $validatedData = $request->validate([
-        'name' => 'required',
-        'username' => 'required|unique:posts',
-        'password' => 'required',
-        'level' => 'required',
-      ]);
-
       $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => bcrypt($request->password),
-        'level' => $request->level
+        'name' => $request->input('name'),
+        'email' => $request->input('email'),
+        'password' => bcrypt($request->input('password')),
+        'level' => $request->input('level')
       ]);
-      return 'sukses tambah user';
+      if(!$user) {
+        return response(['status' => '0']);
+      }
+      return response(['status' => '1']);
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-      App\Flight::withTrashed()
-                ->where('account_id', 1)
-                ->get();
+      $del = User::destroy($id);
+      if($del) {
+        // return response([
+        //   'status' => '1',
+        //   'msg' => 'success delete'
+        // ]);
+        return redirect()->back();
+      } else {
+        // return response([
+        //   'status' => '0',
+        //   'msg' => 'failed delete'
+        // ]);
+        return redirect()->back()->with(['delete' => 'failed hapus data']);
+      }
     }
 
     public function getAturSiswa()
     {
-      return view('staf/aturSiswa');
+      $siswa = User::where('level', 'siswa')->get();
+      return view('staf/aturSiswa', ['data' => $siswa]);
     }
 
     public function getAturAdmin()

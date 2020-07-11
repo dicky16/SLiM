@@ -53,7 +53,7 @@
                 </div>
                 <ul class="list-unstyled components">
                       <img src="{{ asset('staf/img/monitor.png') }}" class="mr-3 ml-3">
-                      <a href="index.php" style="color: black">Data Dosen</a>
+                      <a href="{{route('staf')}}" style="color: black">Monitoring Class</a>
                       <br>
                       <br>
                       <div class="dropdown">
@@ -62,15 +62,15 @@
                           Management User
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Siswa</a>
-                          <a class="dropdown-item" href="#">Guru</a>
-                          <a class="dropdown-item" href="#">Admin</a>
+                          <a class="dropdown-item" href="{{ url('staf/siswa') }}">Siswa</a>
+                          <a class="dropdown-item" href="{{ url('staf/guru') }}">Guru</a>
+                          <a class="dropdown-item" href="{{ url('staf/admin') }}">Admin</a>
                         </div>
                       </div>
                       <br>
                       <br>
                       <img src="{{ asset('staf/img/calendar.png') }}" class="mr-4 ml-3">
-                      <a href="index.php" style="color: black">Data Dosen</a>
+                      <a href="index.php" style="color: black">Calendar</a>
                 </ul>
 
             </nav>
@@ -88,6 +88,7 @@
       src="https://code.jquery.com/jquery-3.5.1.min.js"
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
         <script type="text/javascript">
              $(document).ready(function () {
@@ -100,121 +101,214 @@
                 // add status ac
                 $("#btnAc").click(function(e) {
                   e.preventDefault();
-                  var sesi = '{{Session::get('statusAc')}}';
-                  var data = null;
-                  if(sesi == 'unchecked') {
-                    data = 0;
-                  } else {
-                    data = 1;
-                  }
-                    console.log(sesi);
-                    if(data == 0) {
-                      // setStatusAc();
+                  var ref = firebase.database().ref('ac/status');
+                  ref.on("value", function(snapshot) {
+                    var data = snapshot.val();
+                    // console.log(data);
+                    var sesi = '{{Session::get('statusAc')}}';
+                    if(sesi == "checked") {
                       firebase.database().ref('ac').set({
-                        status : 1
-                      });
-                      $.ajax({
-                        type: 'POST',
-                        url:"{{ url('/staf/setstatus') }}",
-                        data:{jenis:'ac'},
-                        dataType: 'json',
-                        success:function(data) {
-                          if(data.status == '1') {
-                            // alert('AC dinyalakan!')
-                            location.reload();
-                          }
-                        }
-                      });
-                    } else if(data==1) {
+                          status : 0
+                        });
+                        location.replace('{{ url('/staf/del-ac') }}');
+                    } else {
                       firebase.database().ref('ac').set({
-                        status : 0
-                      });
-                      $.ajax({
-                        type: 'POST',
-                        url:"{{ url('/staf/destroystatus') }}",
-                        data:{jenis:'ac'},
-                        dataType: 'json',
-                        success:function(data) {
-                          if(data.status == '0') {
-                            // alert('AC dimatikan!')
-                            location.reload();
-                          }
-                        }
-                      });
+                          status : 1
+                        });
+                        location.replace('{{ url('/staf/set-ac') }}');
                     }
-
+                  }, function (errorObject) {
+                    console.log("The read failed: " + errorObject.code);
+                  });
                 });
 
                 //add status lampu depan
                 $("#btnLd").click(function(e) {
                   e.preventDefault();
-                  var sesi = '{{Session::get('statusLd')}}';
-                  var data = null;
-                  if(sesi == 'unchecked') {
-                    data = 0;
-                  } else {
-                    data = 1;
-                  }
-                    console.log(data);
-                    if(data == 0) {
-                      setStatusLd();
-                      $.ajax({
-                        type: 'POST',
-                        url:"{{ url('/staf/setstatus') }}",
-                        data:{jenis:'ld'},
-                        dataType: 'json',
-                        success:function(data) {
-                          if(data.status == '1') {
-                            // alert('Lampu depan dinyalakan!')
-                            location.reload();
-                          }
-                        }
-                      });
+                  var ref = firebase.database().ref('lampuDepan/status');
+                  ref.on("value", function(snapshot) {
+                    var data = snapshot.val();
+                    // console.log(data);
+                    var sesi = '{{Session::get('statusLd')}}';
+                    if(sesi == "checked") {
+                      firebase.database().ref('lampuDepan').set({
+                          status : 0
+                        });
+                        location.replace('{{ url('/staf/del-ld') }}');
+                    } else {
+                      firebase.database().ref('lampuDepan').set({
+                          status : 1
+                        });
+                        location.replace('{{ url('/staf/set-ld') }}');
                     }
-                    if(data==1) {
-                      destroyStatusLd();
-                      $.ajax({
-                        type: 'POST',
-                        url:"{{ url('/staf/destroystatus') }}",
-                        data:{jenis:'ld'},
-                        dataType: 'json',
-                        success:function(data) {
-                          if(data.status == '0') {
-                            // alert('Lampu depan dimatikan!')
-                            location.reload();
-                          }
-                        }
-                      });
-                    }
+                  }, function (errorObject) {
+                    console.log("The read failed: " + errorObject.code);
+                  });
+                });
 
+                //add status lampu tengah
+                $("#btnLt").click(function(e) {
+                  e.preventDefault();
+                  var ref = firebase.database().ref('lampuTengah/status');
+                  ref.on("value", function(snapshot) {
+                    var data = snapshot.val();
+                    // console.log(data);
+                    var sesi = '{{Session::get('statusLt')}}';
+                    if(sesi == "checked") {
+                      firebase.database().ref('lampuTengah').set({
+                          status : 0
+                        });
+                        location.replace('{{ url('/staf/del-lt') }}');
+                    } else {
+                      firebase.database().ref('lampuTengah').set({
+                          status : 1
+                        });
+                        location.replace('{{ url('/staf/set-lt') }}');
+                    }
+                  }, function (errorObject) {
+                    console.log("The read failed: " + errorObject.code);
+                  });
+                });
+
+                //add status lampu belakang
+                $("#btnLb").click(function(e) {
+                  e.preventDefault();
+                  var ref = firebase.database().ref('lampuBelakang/status');
+                  ref.on("value", function(snapshot) {
+                    var data = snapshot.val();
+                    // console.log(data);
+                    var sesi = '{{Session::get('statusLb')}}';
+                    if(sesi == "checked") {
+                      firebase.database().ref('lampuBelakang').set({
+                          status : 0
+                        });
+                        location.replace('{{ url('/staf/del-lb') }}');
+                    } else {
+                      firebase.database().ref('lampuBelakang').set({
+                          status : 1
+                        });
+                        location.replace('{{ url('/staf/set-lb') }}');
+                    }
+                  }, function (errorObject) {
+                    console.log("The read failed: " + errorObject.code);
+                  });
                 });
 
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');
                  });
                  //toggle
-                 // $("#btnAc").click(function() {
-                 //   // loadStatusAc();
-                 //   console.log('ok');
-                 //   // setStatusAc();
-                 //   destroyStatusAc();
+                 // $(".btnAc").click(function() {
+                 //   var sesi = '{{session()->get('statusAc')}}';
+                 //   if(sesi == 'unchecked') {
+                 //     setStatusAc();
+                 //     console.log('{{session()->get('statusAc')}}');
+                 //   } else {
+                 //     destroyStatusAc();
+                 //     console.log('no');
+                 //   }
+                 //   // console.log('ok');
                  //  });
 
-                  // function loadStatusAc()
-                  // {
-                  //     var ref = firebase.database().ref('slim/ac');
-                  //     ref.on("value", function(snapshot) {
-                  //       // console.log(snapshot.val());
-                  //       var data = snapshot.val();
-                  //       if(data == 1) {
-                  //         $("#btnAc").prop("checked", true);
-                  //       } else {
-                  //         $("#btnAc").prop("checked", false);
-                  //       }
-                  //     }, function (errorObject) {
-                  //       console.log("The read failed: " + errorObject.code);
-                  //     });
-                  // }
+                  function loadStatusAc()
+                  {
+                      var ref = firebase.database().ref('slim/ac');
+                      ref.on("value", function(snapshot) {
+                        // console.log(snapshot.val());
+                        var data = snapshot.val();
+                        return data;
+                      }, function (errorObject) {
+                        console.log("The read failed: " + errorObject.code);
+                      });
+                  }
+                  //ajax form tambah
+                  $("#tambah").click(function(e) {
+                    e.preventDefault();
+                    var name = $("#name").val();
+                    var email = $("#email").val();
+                    var password = $("#password").val();
+                    var l = document.getElementById("level");
+                    var level = l.options[l.selectedIndex].value;
+                    if(name == "" || level == "" || email == "" || password == "") {
+                      alert('data tidak boleh kosong')
+                    } else {
+                        $.ajax({
+                          type: 'POST',
+                          url:"{{ url('/staf/add') }}",
+                          data:{name:name,email:email,password:password,level:level},
+                          dataType: 'json',
+                          success:function(data) {
+                            if(data.status == '1') {
+                              Swal.fire(
+                                'Sukses tambah data',
+                                'success'
+                              )
+                              location.reload();
+                            } else {
+                              Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Gagal tambah data',
+                              })
+                            }
+                          }
+                        });
+                    }
+                  });
+                  $("#btnHapus").click(function(e) {
+                    e.preventDefault();
+                      var id = $("#btnHapus").val();
+                      console.log(id);
+                      // break;
+                        $.ajax({
+                          type: 'DELETE',
+                          url:"{{ url('/staf/delete/1') }}",
+                          dataType: 'json',
+                          success:function(data) {
+                            if(data.status == '1') {
+                              Swal.fire(
+                                'Success',
+                                data.msg
+                              )
+                              location.reload();
+                            } else {
+                              Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: data.msg,
+                              })
+                            }
+                          }
+                        });
+
+                  });
+                  $("#btnEdit").click(function(e) {
+                    e.preventDefault();
+                      var id = $("#btnEdit").val();
+                      console.log(id);
+                      // break;
+                        // $.ajax({
+                        //   type: 'DELETE',
+                        //   url:"{{ url('/staf/delete/1') }}",
+                        //   dataType: 'json',
+                        //   success:function(data) {
+                        //     if(data.status == '1') {
+                        //       Swal.fire(
+                        //         'Success',
+                        //         data.msg
+                        //       )
+                        //       location.reload();
+                        //     } else {
+                        //       Swal.fire({
+                        //         icon: 'error',
+                        //         title: 'Oops...',
+                        //         text: data.msg,
+                        //       })
+                        //     }
+                        //   }
+                        // });
+
+                  });
                   //ac
                   function setStatusAc()
                   {
