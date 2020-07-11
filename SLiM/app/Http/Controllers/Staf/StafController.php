@@ -159,4 +159,9 @@ class StafController
       }
       return view('staf/editUser', ['data' => $user]);
     }
+
+    public function pelajaran()
+    {
+      return view('staf/pelajaran');
+    }
 }

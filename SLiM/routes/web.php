@@ -19,6 +19,7 @@ Route::group(['middleware' => ['cekAdmin']], function () {
     Route::get('siswa', 'Staf\StafController@getAturSiswa');
     Route::get('guru', 'Staf\StafController@getAturGuru');
     Route::get('admin', 'Staf\StafController@getAturAdmin');
+    Route::get('pelajaran', 'Staf\StafController@pelajaran');
     Route::get('delete/{id}', 'Staf\StafController@destroy');
     Route::get('update/{id}', 'Staf\StafController@update');
     Route::post('update', 'Staf\StafController@postUpdate');
@@ -35,6 +36,11 @@ Route::group(['middleware' => ['cekAdmin']], function () {
     Route::get('set-lb', 'Staf\StafController@setLB');
     Route::get('del-lb', 'Staf\StafController@delLB');
   });
+});
+
+Route::prefix('siswa')->group(function () {
+  Route::get('/', 'Siswa\SiswaController@index');
+  Route::get('absensi', 'Siswa\SiswaController@absensi');
 });
 
 // Route::get('tesdb', 'Staf\StafController@tesdb');

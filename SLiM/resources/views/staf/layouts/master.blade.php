@@ -69,6 +69,9 @@
                       </div>
                       <br>
                       <br>
+                      <img src="{{ asset('staf/img/kelas.png') }}" class="mr-4 ml-3">
+                      <a href="{{ url('staf/pelajaran') }}" style="color: black">Jadwal Pelajaran</a>
+                      <br><br>
                       <img src="{{ asset('staf/img/calendar.png') }}" class="mr-4 ml-3">
                       <a href="index.php" style="color: black">Calendar</a>
                 </ul>
