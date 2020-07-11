@@ -120,4 +120,43 @@ class StafController
       // dd($admin);
       return view('staf/aturAdmin', ['data' => $admin]);
     }
+    public function getAturGuru()
+    {
+      $guru = User::where('level', 'guru')->get();
+      // dd($admin);
+      return view('staf/aturGuru', ['data' => $guru]);
+    }
+
+    public function update($id)
+    {
+      $user = User::where('id', $id)->get();
+      return view('staf/editUser', ['data' => $user]);
+    }
+    public function postUpdate(Request $request)
+    {
+      $id = $request->input('id');
+      if(!$request->input('password')) {
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->save();
+        if($user) {
+          return response(['status' => '1']);
+        } else {
+          return response(['status' => '0']);
+        }
+      } else {
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->save();
+        if($user) {
+          return response(['status' => '1']);
+        } else {
+          return response(['status' => '0']);
+        }
+      }
+      return view('staf/editUser', ['data' => $user]);
+    }
 }

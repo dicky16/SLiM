@@ -20,6 +20,8 @@ Route::group(['middleware' => ['cekAdmin']], function () {
     Route::get('guru', 'Staf\StafController@getAturGuru');
     Route::get('admin', 'Staf\StafController@getAturAdmin');
     Route::get('delete/{id}', 'Staf\StafController@destroy');
+    Route::get('update/{id}', 'Staf\StafController@update');
+    Route::post('update', 'Staf\StafController@postUpdate');
     //set sesi status
     Route::post('setstatus', 'Staf\StafController@setStatus');
     Route::post('destroystatus', 'Staf\StafController@destroyStatus');

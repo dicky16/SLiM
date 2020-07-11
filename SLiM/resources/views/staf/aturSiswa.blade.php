@@ -85,7 +85,7 @@
                   <td>pass</td>
                   <td>
                     <a href="delete/{{ $dt->id}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a> |
-                    <a href=""><button class="btn btn-success"><i class="far fa-edit"></i></button></a>
+                    <a href="update/{{ $dt->id}}"><button class="btn btn-success"><i class="far fa-edit"></i></button></a>
                   </td>
                 </tr>
                 <?php $i++; ?>

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- w3school -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="{{ asset('siswa/css/style.css') }}">
+    <link rel="stylesheet" href='css/style.css'>
     <script src="https://kit.fontawesome.com/2ee1f2fc44.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -21,7 +21,7 @@
                     <a style="text-decoration: none;" href=""><img src="img/judul.png"></a>
                 </div>
                 <ul class="list-unstyled components">
-                      <img src="{{ asset('siswa/img/home.png') }}" class="mr-3 ml-3">
+                      <img src="img/home.png" class="mr-3 ml-3">
                       <a href="dasboard.php" style="color: black">Home</a>
                       <br>
                       <br>
@@ -56,46 +56,46 @@
                  <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                       <i class="glyphicon glyphicon-align-left fa fa-bars fa-2x"></i>
                       <!-- <img src="img/menu_toggle.png" alt=""> -->
-                  </button>
+                  </button>                    
                   </div>
                 </div>
             <!-- icon home  -->
                 <div style="float: left;">
-                  <h2 style="color : white; ">Home</h2>
+                  <h2 style="color : white; ">Home</h2>   
                 </div>
-                <div style="float: left;">
+                <div style="float: left;">                     
                   <img id="icon-home" src="img/home_icon.png">
                 </div>
                 <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Dashboard</p></span>
-
+                
                 <div style=" position: absolute;  padding-left: 700px; margin-top: -50px;">
                 <img style="width:27%; padding-right: 20px;" src="img/bell.png">
-                <img width="30%" src="img/akun.png"/>
-                </div>
-                <span class="text-nama"><p>Muchammad Muchib</p></span>
+                <img width="30%" src="img/akun.png"/> 
+                </div> 
+                <span class="text-nama"><p>Muchammad Muchib</p></span> 
                 <div style="clear: both;"></div>
                   <!-- content dasboard -->
-
+                  
                   <h3 style="color : white;">Kelas</h3>
-
+                  
                   <div class="row text-siswa">
                     <div class="col-sm-3">
                       <div class="card">
                         <div class="card-body">
-                          <h5 id="text-matkul">Bahasa Indonesia</h5>
-                          <h5>Senin, 03-07-2020</h5>
+                          <h5 id="text-matkul">Bahasa Indonesia</h5>                                                    
+                          <h5>Senin, 03-07-2020</h5>                          
                         </div>
                       </div>
                     </div>
                     <div class="col-sm-3">
                       <div class="card">
                         <div class="card-body">
-                          <h5 id="text-matkul">Bahasa Indonesia</h5>
-                          <h5>Senin, 03-07-2020</h5>
+                          <h5 id="text-matkul">Bahasa Indonesia</h5>                                                    
+                          <h5>Senin, 03-07-2020</h5>                          
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div>         
 
                   <h3 style="color : white;">Jadwal Hari Ini</h3>
                   <div class="row text-siswa">
@@ -123,8 +123,8 @@
                               <th scope="row">KD001</th>
                               <td>Bahasa Indonesia</td>
                               <td>12A</td>
-                              <td>07.00-08.00</td>
-                              <td>Pak Guru</td>
+                              <td>07.00-08.00</td> 
+                              <td>Pak Guru</td>                             
                             </tr>
                             <tr>
                               <th scope="row">KD001</th>
@@ -140,14 +140,14 @@
                     </div>
                   </div>
 
-                  <div style="float: left;"><h3 style="color : white;">Tugas Belum Selesai</h3></div>
+                  <div style="float: left;"><h3 style="color : white;">Tugas Belum Selesai</h3></div>                  
                   <!-- <h3><a style="text-decoration: none; float: right;" href="" class="btn btn-primary">Lihat Semua</a></h3>  -->
                   <div style="clear: both;"></div>
                   <div class="row text-siswa">
                     <div class="col-sm-3">
                       <div class="card">
                         <div class="card-body">
-                          <h5 id="text-matkul">Bahasa Indonesia</h5>
+                          <h5 id="text-matkul">Bahasa Indonesia</h5>                                                   
                           <h5>Senin, 03-07-2020</h5>
                           <a href="" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>
                         </div>

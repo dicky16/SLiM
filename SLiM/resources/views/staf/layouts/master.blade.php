@@ -197,30 +197,7 @@
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');
                  });
-                 //toggle
-                 // $(".btnAc").click(function() {
-                 //   var sesi = '{{session()->get('statusAc')}}';
-                 //   if(sesi == 'unchecked') {
-                 //     setStatusAc();
-                 //     console.log('{{session()->get('statusAc')}}');
-                 //   } else {
-                 //     destroyStatusAc();
-                 //     console.log('no');
-                 //   }
-                 //   // console.log('ok');
-                 //  });
 
-                  function loadStatusAc()
-                  {
-                      var ref = firebase.database().ref('slim/ac');
-                      ref.on("value", function(snapshot) {
-                        // console.log(snapshot.val());
-                        var data = snapshot.val();
-                        return data;
-                      }, function (errorObject) {
-                        console.log("The read failed: " + errorObject.code);
-                      });
-                  }
                   //ajax form tambah
                   $("#tambah").click(function(e) {
                     e.preventDefault();
@@ -255,88 +232,65 @@
                         });
                     }
                   });
-                  $("#btnHapus").click(function(e) {
+
+                  //ajax edit user
+                  $("#edit").click(function(e) {
                     e.preventDefault();
-                      var id = $("#btnHapus").val();
-                      console.log(id);
-                      // break;
+                    var name = $("#name").val();
+                    var email = $("#email").val();
+                    var password = $("#password").val();
+                    var id = $("#edit").data("id");
+                    if(name == "" || email == "") {
+                      alert('data tidak boleh kosong')
+                    } else {
+                      if(password == "") {
                         $.ajax({
-                          type: 'DELETE',
-                          url:"{{ url('/staf/delete/1') }}",
+                          type: 'POST',
+                          url:"{{ url('/staf/update') }}",
+                          data:{name:name,email:email,id:id},
                           dataType: 'json',
                           success:function(data) {
                             if(data.status == '1') {
                               Swal.fire(
-                                'Success',
-                                data.msg
+                                'Sukses edit data',
+                                'success'
                               )
                               location.reload();
                             } else {
                               Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: data.msg,
+                                text: 'Gagal tambah data',
                               })
                             }
                           }
                         });
-
+                      } else {
+                        $.ajax({
+                          type: 'POST',
+                          url:"{{ url('/staf/update') }}",
+                          data:{name:name,email:email,id:id,password:password},
+                          dataType: 'json',
+                          success:function(data) {
+                            if(data.status == '1') {
+                              Swal.fire(
+                                'Sukses edit data',
+                                'success'
+                              )
+                              location.reload();
+                            } else {
+                              Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Gagal tambah data',
+                              })
+                            }
+                          }
+                        });
+                      }
+                    }
                   });
-                  $("#btnEdit").click(function(e) {
-                    e.preventDefault();
-                      var id = $("#btnEdit").val();
-                      console.log(id);
-                      // break;
-                        // $.ajax({
-                        //   type: 'DELETE',
-                        //   url:"{{ url('/staf/delete/1') }}",
-                        //   dataType: 'json',
-                        //   success:function(data) {
-                        //     if(data.status == '1') {
-                        //       Swal.fire(
-                        //         'Success',
-                        //         data.msg
-                        //       )
-                        //       location.reload();
-                        //     } else {
-                        //       Swal.fire({
-                        //         icon: 'error',
-                        //         title: 'Oops...',
-                        //         text: data.msg,
-                        //       })
-                        //     }
-                        //   }
-                        // });
 
-                  });
-                  //ac
-                  function setStatusAc()
-                  {
-                        firebase.database().ref('ac').set({
-                          status : 1
-                        });
-                  }
-
-                  function destroyStatusAc()
-                  {
-                        firebase.database().ref('ac').set({
-                          status : 0
-                        });
-                  }
-                  //lampu depan
-                  function setStatusLd()
-                  {
-                        firebase.database().ref('lampuDepan').set({
-                          status : 1
-                        });
-                  }
-
-                  function destroyStatusLd()
-                  {
-                        firebase.database().ref('lampuDepan').set({
-                          status : 0
-                        });
-                  }
              });
          </script>
   </body>

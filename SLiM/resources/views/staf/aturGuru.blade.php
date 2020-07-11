@@ -1,6 +1,6 @@
 @extends('staf.layouts.master')
 
-@section('judul', 'user')
+@section('judul', 'guru')
 
 @section('content')
 
@@ -21,7 +21,7 @@
                   <img src="{{ asset('staf/img/Home.png') }}">
                 </div>
                 <div style="color : white;" class="col">
-                  <span>User management - Admin</span>
+                  <span>User management - Guru</span>
                 </div>
               </div>
               <div class="row">
@@ -44,7 +44,7 @@
           </div>
       </nav>
 
-      <h2 style="color : white;">Admin</h2>
+      <h2 style="color : white;">Guru</h2>
       <div class="container" style="background-color: white;" >
         <div class="row mt-4">
           <div class="col-6">
@@ -57,11 +57,10 @@
             </div>
           </div>
           <div class="col-6">
-            <button class="btn btn-primary float-right"><i class="fas fa-plus"></i></button>
+            <a href="add"><button class="btn btn-primary float-right"><i class="fas fa-plus"></i></button></a>
           </div>
         </div>
         <div class="row">
-
           <table class="table">
               <thead class="thead-dark">
                 <tr>
@@ -75,15 +74,15 @@
                 </tr>
               </thead>
               <tbody>
-                <?php $i = 1; ?>
-                @foreach ($data as $dt)
                 <tr>
+                  <?php $i = 1; ?>
+                  @foreach($data as $dt)
                   <th scope="row">{{$i}}</th>
                   <td>{{$dt->name}}</td>
-                  <td>Otto</td>
+                  <td>kelas</td>
                   <td>@mdo</td>
                   <td>{{$dt->email}}</td>
-                  <td>-</td>
+                  <td>pass</td>
                   <td>
                     <a href="delete/{{ $dt->id}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a> |
                     <a href="update/{{ $dt->id}}"><button class="btn btn-success"><i class="far fa-edit"></i></button></a>
@@ -99,9 +98,4 @@
 
   </div>
 </div>
-@if($msg = Session::get('delete'))
-<script type="text/javascript">
-  alert('{{ $msg }}')
-</script>
-@endif
 @endsection

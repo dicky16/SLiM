@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- w3school -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="{{ asset('siswa/css/style.css') }}">
+    <link rel="stylesheet" href='css/style.css'>
     <script src="https://kit.fontawesome.com/2ee1f2fc44.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -18,10 +18,10 @@
                 <img src="{{ asset('staf/img/Menu.png') }}" alt="">
               </div>
                 <div class="sidebar-header">
-                    <a style="text-decoration: none;" href=""><img src="img/judul.png"></a>
+                  <a style="text-decoration: none;" href=""><img src="img/judul.png"></a>
                 </div>
                 <ul class="list-unstyled components">
-                      <img src="{{ asset('siswa/img/home.png') }}" class="mr-3 ml-3">
+                      <img src="img/home.png" class="mr-3 ml-3">
                       <a href="dasboard.php" style="color: black">Home</a>
                       <br>
                       <br>
@@ -50,106 +50,115 @@
 
             <!-- Page Content Holder -->
             <div class="container">
-            <div style="padding-top: 6px;" id="content" class="background-siswa">
+              <div id="content" class="background-siswa">
               <div style="position: absolute; margin-left: -130px; margin-top: 15px;" class="row">
                 <div class="col">
                  <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                       <i class="glyphicon glyphicon-align-left fa fa-bars fa-2x"></i>
                       <!-- <img src="img/menu_toggle.png" alt=""> -->
-                  </button>
+                  </button>                    
                   </div>
                 </div>
+                 <!-- search box -->
+                   
+                  <div class="form-group has-search">
+                    <div id="main-search" style="float: left;">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" class="form-control" placeholder="Search">
+                    </div> 
+                  </div>                  
+                <div style="padding-left: 700px; top: 13px; position: absolute;" >
+                <img style="width:27%; padding-right: 20px;" src="img/bell.png"/>
+                <img width="30%" src="img/akun.png"/>                
+                </div>
+                <span style="position: absolute; top: 20px; padding-left: 56.5%;"><p>Muchammad Muchib</p></span>
+                <div style="clear: both;"></div>
             <!-- icon home  -->
                 <div style="float: left;">
-                  <h2 style="color : white; ">Home</h2>
+                  <h2 style="color : white; ">Home</h2>   
                 </div>
-                <div style="float: left;">
-                  <img id="icon-home" src="img/home_icon.png">
+                <div style="float: left;">                     
+                  <img id="icon-home" src="img/home_icon.png"> 
                 </div>
-                <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Dashboard</p></span>
-
-                <div style=" position: absolute;  padding-left: 700px; margin-top: -50px;">
-                <img style="width:27%; padding-right: 20px;" src="img/bell.png">
-                <img width="30%" src="img/akun.png"/>
-                </div>
-                <span class="text-nama"><p>Muchammad Muchib</p></span>
+                  <p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Tugas</p>                               
                 <div style="clear: both;"></div>
+
                   <!-- content dasboard -->
-
-                  <h3 style="color : white;">Kelas</h3>
-
+                  <p></p>
+                  <h3 style="color : white;">Tugas Baru</h3>
+                  <p></p>
                   <div class="row text-siswa">
                     <div class="col-sm-3">
                       <div class="card">
                         <div class="card-body">
-                          <h5 id="text-matkul">Bahasa Indonesia</h5>
+                          <h5 id="text-matkul">Bahasa Indonesia</h5>                                                    
                           <h5>Senin, 03-07-2020</h5>
+                          <a href="" style="text-decoration: none; color: #ff3333;"><h6>Kumpulkan</h6></a>
                         </div>
                       </div>
                     </div>
                     <div class="col-sm-3">
                       <div class="card">
                         <div class="card-body">
-                          <h5 id="text-matkul">Bahasa Indonesia</h5>
+                          <h5 id="text-matkul">Bahasa Indonesia</h5>                                                    
                           <h5>Senin, 03-07-2020</h5>
+                          <a href="" style="text-decoration: none; color: #ff3333;"><h6>Kumpulkan</h6></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                   
+                  <p></p>                  
+
+                  <h3 style="color : white;">Tugas Telat</h3>
+                  <div class="row text-siswa">
+                    <div class="col-sm-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 id="text-matkul">Bahasa Indonesia</h5>                                                  
+                          <h5>Senin, 03-07-2020</h5>
+                          <a href="" style="text-decoration: none; color: #ff3333;"><h6>Tandai Selesai</h6></a>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <h3 style="color : white;">Jadwal Hari Ini</h3>
-                  <div class="row text-siswa">
-                    <div class="col-sm-12">
-                      <div class="table-responsive">
-                        <table class="table table-bordered bg-white">
-                          <thead>
-                            <tr style="background-color: #F6F9FC;">
-                              <th scope="col">Hari</th>
-                              <th scope="col">Mata Pelajaran</th>
-                              <th scope="col">Kelas</th>
-                              <th scope="col">Jam</th>
-                              <th scope="col">Guru</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">KD001</th>
-                              <td>Bahasa Indonesia</td>
-                              <td>12A</td>
-                              <td>07.00-08.00</td>
-                              <td>Pak Guru</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">KD001</th>
-                              <td>Bahasa Indonesia</td>
-                              <td>12A</td>
-                              <td>07.00-08.00</td>
-                              <td>Pak Guru</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">KD001</th>
-                              <td>Bahasa Indonesia</td>
-                              <td>12A</td>
-                              <td>07.00-08.00</td>
-                              <td>Pak Guru</td>
-                            </tr>
-                          </tbody>
-                        </table>
-
-                    </div>
-                    </div>
-                  </div>
-
-                  <div style="float: left;"><h3 style="color : white;">Tugas Belum Selesai</h3></div>
-                  <!-- <h3><a style="text-decoration: none; float: right;" href="" class="btn btn-primary">Lihat Semua</a></h3>  -->
+                  <div style="float: left;"><h3 style="color : white;">Tugas Selesai</h3></div>                  
+                  <h3><a style="text-decoration: none; float: right;" href="" class="btn btn-primary">Lihat Semua</a></h3> 
                   <div style="clear: both;"></div>
                   <div class="row text-siswa">
+                    <div class="col-sm-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 id="text-matkul">Bahasa Indonesia</h5>                                                   
+                          <h5>Senin, 03-07-2020</h5>
+                          <a href="" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>
+                        </div>
+                      </div>
+                    </div>
                     <div class="col-sm-3">
                       <div class="card">
                         <div class="card-body">
                           <h5 id="text-matkul">Bahasa Indonesia</h5>
                           <h5>Senin, 03-07-2020</h5>
                           <a href="" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 id="text-matkul">Bahasa Indonesia</h5>                                              
+                          <h5>Senin, 03-07-2020</h5>
+                          <a href="" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>                                                   
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 id="text-matkul">Bahasa Indonesia</h5>                                              
+                          <h5>Senin, 03-07-2020</h5>
+                          <a href="" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>                                                  
                         </div>
                       </div>
                     </div>
