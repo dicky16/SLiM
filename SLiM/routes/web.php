@@ -49,7 +49,7 @@ Route::group(['middleware' => ['cekSiswa']], function () {
     Route::get('jadwal', 'Siswa\SiswaController@jadwal');
     Route::get('tugas', 'Siswa\SiswaController@tugas');
     Route::get('kelas', 'Siswa\SiswaController@kelas');
-    Route::get('kelas-detail', 'Siswa\SiswaController@detailKelas');
+    Route::get('kelas-detail/{id}', 'Siswa\SiswaController@detailKelas');
     Route::get('calender', 'Siswa\SiswaController@calender');
   });
 });
@@ -62,7 +62,11 @@ Route::group(['middleware' => ['cekGuru']], function () {
     Route::get('jadwal', 'Guru\GuruController@jadwal');
     Route::get('tugas', 'Guru\GuruController@tugas');
     Route::get('kelas', 'Guru\GuruController@kelas');
-    Route::get('kelas-detail', 'Guru\GuruController@detailKelas');
+    // Route::get('kelas-detail/{id}', 'Guru\GuruController@detailKelas');
+    Route::get('kelas-detail/{id}/materi', 'Guru\GuruController@detailMateri');
+    Route::get('kelas-detail/{id}/tugas', 'Guru\GuruController@detailTugas');
+    Route::get('kelas-detail/{id}/tugas-tambah', 'Guru\GuruController@tambahTugas');
+    Route::post('tugas-tambah', 'Guru\GuruController@postTambahTugas');
     Route::get('calender', 'Guru\GuruController@calender');
   });
 });

@@ -91,9 +91,10 @@ class GuruController
       ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
       ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
       ->join('users', 'jadwal.id_guru', '=', 'users.id')
-      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->select('jadwal.id','jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
       ->where('id_guru', Auth::user()->id)
       ->get();
+      // dd($data);
 
       return view('guru/kelas', ['data' => $data]);
     }
@@ -116,8 +117,106 @@ class GuruController
       return view('guru/jadwal', ['data' => $data]);
     }
 
-    public function detalKelas()
+    public function detailKelas($id)
     {
-      return view('guru/kelasDetail');
+      $data = DB::table('jadwal_pelajaran as jadwal')
+      ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
+      ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
+      ->join('users', 'jadwal.id_guru', '=', 'users.id')
+      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->where('jadwal.id', $id)
+      ->get();
+      // dd($data);
+      return view('guru/kelasDetail', ['data' => $data]);
+    }
+
+    public function detailMateri($id)
+    {
+      $data = DB::table('jadwal_pelajaran as jadwal')
+      ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
+      ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
+      ->join('users', 'jadwal.id_guru', '=', 'users.id')
+      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->where('jadwal.id', $id)
+      ->get();
+      // dd($data);
+      return view('guru/kelasDetailMateri', ['data' => $data]);
+    }
+
+    public function detailTugas($id)
+    {
+      $data = DB::table('jadwal_pelajaran as jadwal')
+      ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
+      ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
+      ->join('users', 'jadwal.id_guru', '=', 'users.id')
+      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->where('jadwal.id', $id)
+      ->get();
+      // dd($data);
+      return view('guru/kelasDetailTugas', ['data' => $data]);
+    }
+
+    public function tambahTugas($id)
+    {
+      $data = DB::table('jadwal_pelajaran as jadwal')
+      ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
+      ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
+      ->join('users', 'jadwal.id_guru', '=', 'users.id')
+      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name', 'kelas.id as id_kelas', 'mapel.id as id_mapel')
+      ->where('jadwal.id', $id)
+      ->get();
+      // dd($data[0]);
+      return view('guru/tambahTugas', ['data' => $data]);
+    }
+
+    public function postTambahTugas(Request $request)
+    {
+      $this->timeZone('Asia/Jakarta');
+
+      $file = $request->file('fileUp');
+
+      $nama_guru = Auth::user()->name;
+      $judul_tugas = $request->nama;
+      $deskripsi = $request->deskripsi;
+      $file_path = $this->uploadFile($file, './assets/user/tugas', 'tugas');
+      $deadline = $request->deadline;
+      // dd($deadline);
+      $id_kelas = $request->id_kelas;
+      $id_mata_pelajaran = $request->id_mapel;
+      $tanggal_buat = date('d:m:y H:m:i');
+
+      $data = DB::table('tugas')->insert([
+        'nama_guru' => $nama_guru,
+        'judul_tugas' => $judul_tugas,
+        'deskripsi' => $deskripsi,
+        'file_path' => $file_path,
+        'deadline' => $deadline,
+        'id_kelas' => $id_kelas,
+        'id_mata_pelajaran' => $id_mata_pelajaran,
+        'tanggal_buat' => $tanggal_buat,
+      ]);
+      if($data) {
+        session()->flash('status', 'success upload tugas!');
+        return redirect()->back();
+      } else {
+        session()->flash('status', 'gagal upload tugas!');
+        return redirect()->back();
+      }
+    }
+
+    function uploadFile($file, $destinationPath, $frontName)
+    {
+        // $file = $request->file($filePost);
+        $fileName = $file->getClientOriginalName();
+        $fileNameArr = explode('.', $fileName);
+        $file_ext = end($fileNameArr);
+        // $destinationPath = './assets/user/img';
+        $image = $frontName . time() . '.' . $file_ext;
+
+        if($file->move($destinationPath, $image)) {
+          return $image;
+        } else {
+          return false;
+        }
     }
 }

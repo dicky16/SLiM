@@ -41,7 +41,7 @@
               <label class="mt-0">
               <h5 align="center" class="card-title">{{ $kelas->hari}}, {{$kelas->jam}}</h5>
               </label>
-              <a href="kelas2.html"><button type="button" class="btn btn-info float-right">Cek Kelas</button></a>
+              <a href="kelas-detail/{{$kelas->id}}/materi"><button type="button" class="btn btn-info float-right">Cek Kelas</button></a>
             </div>
           </div>
         </div><br>

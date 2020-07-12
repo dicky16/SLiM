@@ -25,9 +25,9 @@
     <div style="float: left;">
       <img id="icon-home" src="img/home_icon.png">
     </div>
-      <p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Kelas 12 A</p>
-      <h1 class="text-white text-center">Matematika</h1>
-      <h3 class="text-white text-center">Kelas 12 A</h3>
+      <p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Kelas {{$data[0]->kelas}}</p>
+      <h1 class="text-white text-center">{{$data[0]->mata_pelajaran}}</h1>
+      <h3 class="text-white text-center">Kelas {{$data[0]->kelas}}</h3>
     <div style="clear: both;"></div>
 
     <!--Content-->
@@ -39,18 +39,19 @@
       </div>
   </div>
     <div  id="content-detailkelas-01" >
-      <div style="text-align: center; padding-top: 50px;">
+      <!-- <div style="text-align: center; padding-top: 50px;">
         <button style="background: #103156;" type="button" class="btn btn-lg text-white">Materi</button>
         <button style="background: #11CDEF;" type="button" class="btn btn-lg text-white">Tugas Kelas</button>
-      </div>
-      <div style="margin: 40px; text-align: center;">
+      </div> -->
+      <!-- <div style="margin: 40px; text-align: center;">
         <button id="btn-tugas" type="button" class="btn text-white bold">Tugas Kelas</button><br>
-        <button style="background: #103156;" id="btn-tugas" type="button" class="btn text-white">Materi</button><br>
+        <button style="background: #103156;" id="btn-tugas" type="button" class="btn text-white">Bahasa Indonesia.pdf</button><br>
         <button id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
         <button id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
         <button id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
         <button id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
-      </div>
+      </div> -->
+      @yield('isi')
     </div>
 </div>
 @endsection
