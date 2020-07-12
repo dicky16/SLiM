@@ -55,6 +55,13 @@ Route::group(['middleware' => ['cekSiswa']], function () {
 Route::group(['middleware' => ['cekGuru']], function () {
   Route::prefix('guru')->group(function () {
     Route::get('/', 'Guru\GuruController@index');
+    Route::get('absensi', 'Guru\GuruController@absensi');
+    Route::post('absensi', 'Guru\GuruController@postAbsen');
+    Route::get('jadwal', 'Guru\GuruController@jadwal');
+    Route::get('tugas', 'Guru\GuruController@tugas');
+    Route::get('kelas', 'Guru\GuruController@kelas');
+    Route::get('kelas-detail', 'Guru\GuruController@detailKelas');
+    Route::get('calender', 'Guru\GuruController@calender');
   });
 });
 

@@ -23,6 +23,7 @@ class CekGuru
       // $user = Auth::user();
       $role = Auth::user()->level;
       if($role == "guru") {
+        \View::share('user', auth()->user()->name);
         return $next($request);
       }
       return redirect('login');
