@@ -87,7 +87,15 @@ class GuruController
 
     public function kelas()
     {
-      return view('guru/kelas');
+      $data = DB::table('jadwal_pelajaran as jadwal')
+      ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
+      ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
+      ->join('users', 'jadwal.id_guru', '=', 'users.id')
+      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->where('id_guru', Auth::user()->id)
+      ->get();
+
+      return view('guru/kelas', ['data' => $data]);
     }
 
     public function tugas()
@@ -97,7 +105,15 @@ class GuruController
 
     public function jadwal()
     {
-      return view('guru/jadwal');
+      $data = DB::table('jadwal_pelajaran as jadwal')
+      ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
+      ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
+      ->join('users', 'jadwal.id_guru', '=', 'users.id')
+      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->where('id_guru', Auth::user()->id)
+      ->get();
+      // dd($data);
+      return view('guru/jadwal', ['data' => $data]);
     }
 
     public function detalKelas()

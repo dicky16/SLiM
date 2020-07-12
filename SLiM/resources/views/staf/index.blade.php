@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container">
+
   <div id="content" class="bg-dark">
 
       <nav class="navbar navbar-default bg-dark">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Siswa;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Auth;
 class SiswaController
 {
     public function index()
@@ -24,6 +24,7 @@ class SiswaController
       ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
       ->join('users', 'jadwal.id_guru', '=', 'users.id')
       ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->where('jadwal.id_kelas', $this->getId())
       ->get();
       // dd($data);
       return view('siswa/jadwal', ['data' => $data]);
@@ -47,5 +48,12 @@ class SiswaController
     public function detailKelas()
     {
       return view('siswa/detailKelas');
+    }
+
+    function getId()
+    {
+      $id = DB::table('users')->select('id_kelas')->where('id', Auth::user()->id)->value('id');
+      // dd($id);
+      return $id;
     }
 }

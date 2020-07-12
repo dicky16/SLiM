@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="col-6">
-            <a href="add"><button class="btn btn-primary float-right"><i class="fas fa-plus"></i></button></a>
+            <a href="siswa-tambah"><button class="btn btn-primary float-right"><i class="fas fa-plus"></i></button></a>
           </div>
         </div>
         <div class="row">

@@ -47,9 +47,10 @@
             <!-- Sidebar Holder -->
 
             <nav id="sidebar">
-              <div class="float-right md-3">
+              <!-- <div class="float-right md-3">
                 <img src="{{ asset('staf/img/Menu.png') }}" alt="">
-              </div>
+              </div> -->
+
                 <div class="sidebar-header">
                     <h3 style="color: black">SLiM</h3>
                 </div>
@@ -204,39 +205,39 @@
                  });
 
                   //ajax form tambah
-                  $("#tambah").click(function(e) {
-                    e.preventDefault();
-                    var name = $("#name").val();
-                    var email = $("#email").val();
-                    var password = $("#password").val();
-                    var l = document.getElementById("level");
-                    var level = l.options[l.selectedIndex].value;
-                    if(name == "" || level == "" || email == "" || password == "") {
-                      alert('data tidak boleh kosong')
-                    } else {
-                        $.ajax({
-                          type: 'POST',
-                          url:"{{ url('/staf/add') }}",
-                          data:{name:name,email:email,password:password,level:level},
-                          dataType: 'json',
-                          success:function(data) {
-                            if(data.status == '1') {
-                              Swal.fire(
-                                'Sukses tambah data',
-                                'success'
-                              )
-                              location.reload();
-                            } else {
-                              Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Gagal tambah data',
-                              })
-                            }
-                          }
-                        });
-                    }
-                  });
+                  // $("#tambah").click(function(e) {
+                  //   e.preventDefault();
+                  //   var name = $("#name").val();
+                  //   var email = $("#email").val();
+                  //   var password = $("#password").val();
+                  //   var l = document.getElementById("level");
+                  //   var level = l.options[l.selectedIndex].value;
+                  //   if(name == "" || level == "" || email == "" || password == "") {
+                  //     alert('data tidak boleh kosong')
+                  //   } else {
+                  //       $.ajax({
+                  //         type: 'POST',
+                  //         url:"{{ url('/staf/add') }}",
+                  //         data:{name:name,email:email,password:password,level:level},
+                  //         dataType: 'json',
+                  //         success:function(data) {
+                  //           if(data.status == '1') {
+                  //             Swal.fire(
+                  //               'Sukses tambah data',
+                  //               'success'
+                  //             )
+                  //             location.reload();
+                  //           } else {
+                  //             Swal.fire({
+                  //               icon: 'error',
+                  //               title: 'Oops...',
+                  //               text: 'Gagal tambah data',
+                  //             })
+                  //           }
+                  //         }
+                  //       });
+                  //   }
+                  // });
 
                   //ajax edit user
                   $("#edit").click(function(e) {
@@ -295,48 +296,6 @@
                       }
                     }
                   });
-
-                  //ajax tambah mapel
-                  // $("#tambahMapel").click(function(e) {
-                  //   e.preventDefault();
-                  //   var hari = $("#hari").val();
-                  //   var m = document.getElementById("mapel");
-                  //   var mapel = m.options[m.selectedIndex].value;
-                  //
-                  //   var k = document.getElementById("kelas");
-                  //   var kelas = k.options[k.selectedIndex].value;
-                  //
-                  //   var g = document.getElementById("guru");
-                  //   var guru = g.options[g.selectedIndex].value;
-                  //
-                  //   var jam = $("#default-picker").val();
-                  //
-                  //   if(hari == "" || mapel == "" || kelas == "" || guru == "" || jam == "") {
-                  //     alert('data tidak boleh kosong')
-                  //   } else {
-                  //       $.ajax({
-                  //         type: 'POST',
-                  //         url:"{{ url('/staf/add-mapel') }}",
-                  //         data:{hari:hari,mapel:mapel,kelas:kelas,guru:guru,jam:jam},
-                  //         dataType: 'json',
-                  //         success:function(data) {
-                  //           if(data.status == '1') {
-                  //             Swal.fire(
-                  //               'Sukses tambah data',
-                  //               'success'
-                  //             )
-                  //             location.reload();
-                  //           } else {
-                  //             Swal.fire({
-                  //               icon: 'error',
-                  //               title: 'Oops...',
-                  //               text: 'Gagal tambah data',
-                  //             })
-                  //           }
-                  //         }
-                  //       });
-                  //   }
-                  // });
 
              });
          </script>

@@ -21,7 +21,7 @@
                   <img src="{{ asset('staf/img/Home.png') }}">
                 </div>
                 <div style="color : white;" class="col">
-                  <span>Mata Pelajaran</span>
+                  <span>Jadwal Pelajaran</span>
                 </div>
               </div>
               <div class="row">
@@ -44,7 +44,7 @@
           </div>
       </nav>
 
-      <h2 style="color : white;">Mata Pelajaran</h2>
+      <h2 style="color : white;">Jadwal Pelajaran</h2>
       <div class="container" style="background-color: white;" >
         <div class="row mt-4">
           <div class="col-6">

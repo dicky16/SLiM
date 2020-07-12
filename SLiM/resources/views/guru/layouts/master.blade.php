@@ -60,22 +60,12 @@
 
         <script type="text/javascript">
              $(document).ready(function () {
-               setInterval(timestamp, 1000);
-
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');
                  });
 
              });
 
-             function timestamp() {
-               $.ajax({
-                   url: 'http://localhost/SLiM/assets/guru/timestamp.php',
-                   success: function(data) {
-                       $('#timestamp').html(data);
-                   },
-               });
-            }
          </script>
   </body>
 </html>

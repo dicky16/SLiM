@@ -19,6 +19,8 @@ Route::group(['middleware' => ['cekAdmin']], function () {
     Route::get('add-mapel', 'Staf\StafController@mapel');
     Route::post('add-mapel', 'Staf\StafController@postMapel');
     Route::get('siswa', 'Staf\StafController@getAturSiswa');
+    Route::get('siswa-tambah', 'Staf\StafController@tambahSiswa');
+    Route::post('siswa-tambah', 'Staf\StafController@postTambahSiswa');
     Route::get('guru', 'Staf\StafController@getAturGuru');
     Route::get('admin', 'Staf\StafController@getAturAdmin');
     Route::get('pelajaran', 'Staf\StafController@pelajaran');

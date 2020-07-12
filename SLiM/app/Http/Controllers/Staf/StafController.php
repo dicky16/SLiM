@@ -79,16 +79,48 @@ class StafController
 
     public function addUser(Request $request)
     {
-      $user = User::create([
-        'name' => $request->input('name'),
-        'email' => $request->input('email'),
-        'password' => bcrypt($request->input('password')),
-        'level' => $request->input('level')
+      $valid = $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'password' => 'required',
+        'level' => 'required',
+        'imageUser' => 'required',
       ]);
-      if(!$user) {
-        return response(['status' => '0']);
+
+      if($request->hasFile('imageUser')) {
+        $file = $request->file('imageUser');
+        $fileName = $file->getClientOriginalName();
+        $fileNameArr = explode('.', $fileName);
+        $file_ext = end($fileNameArr);
+        $destinationPath = './assets/user/img';
+        $image = 'user-' . time() . '.' . $file_ext;
+
+        if($file->move($destinationPath, $image)) {
+          $this->compressImage($image);
+
+          $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'level' => $request->input('level'),
+            'img_path' => $image
+          ]);
+          if(!$user) {
+            session()->flash('status', 'Gagal tambah data');
+            return redirect()->back();
+          } else {
+            session()->flash('status', 'Berhasil tambah data');
+            return redirect()->back();
+          }
+        } else {
+          session()->flash('status', 'Gagal tambah data');
+          return redirect()->back();
+        }
+      } else {
+        session()->flash('status', 'Tidak ada file ada gambar terlalu besar');
+        return redirect()->back();
       }
-      return response(['status' => '1']);
+
     }
 
     public function destroy($id)
@@ -191,12 +223,17 @@ class StafController
       ->select('id')->where('kelas', '=', $request->kelas)->value('id');
       $id_guru = DB::table('users')
       ->select('id')->where('name', '=', $request->guru)->value('id');
+      $jam = $request->jam .' - '. $request->jamAkhir;
+      // dd($jam);
+      if($id_mapel == "" || $id_kelas == "" || $id_guru == "" || $jam == "") {
+        return redirect()->back();
+      }
       $mapel = DB::table('jadwal_pelajaran')->insert(
         [
           'hari' => $request->input('hari'),
           'id_mata_pelajaran' => $id_mapel,
           'id_kelas' => $id_kelas,
-          'jam' => $request->input('jam'),
+          'jam' => $jam,
           'id_guru' => $id_guru,
         ]
       );
@@ -205,5 +242,98 @@ class StafController
       } else {
         return redirect('staf/add-mapel')->with(['status', '0']);
       }
+    }
+
+    public function tambahSiswa()
+    {
+      $kelas = DB::table('tabel_kelas')->get();
+      $smt = DB::table('tabel_semester')->get();
+      return view('staf/tambahSiswa', compact(['kelas', 'smt']));
+    }
+
+    public function postTambahSiswa(Request $request)
+    {
+      $valid = $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'password' => 'required',
+        'imageUser' => 'required',
+      ]);
+
+      if($request->hasFile('imageUser')) {
+        $file = $request->file('imageUser');
+        $fileName = $file->getClientOriginalName();
+        $fileNameArr = explode('.', $fileName);
+        $file_ext = end($fileNameArr);
+        $destinationPath = './assets/user/img';
+        $image = 'user-' . time() . '.' . $file_ext;
+
+        if($file->move($destinationPath, $image)) {
+          $this->compressImage($image);
+
+          $id_kelas = DB::table('tabel_kelas')->select('id')->where('kelas', $request->input('kelas'))->value('id');
+          $id_semester = null;
+
+          if($request->input('semester') == "Ganjil") {
+            $id_semester = 1;
+          } else if($request->input('semester') == "Genap") {
+            $id_semester = 2;
+          }
+
+          $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'id_kelas' => $id_kelas,
+            'id_semester' => $id_semester,
+            'level' => 'siswa',
+            'img_path' => $image
+          ]);
+          if(!$user) {
+            session()->flash('status', 'Gagal tambah data');
+            return redirect()->back();
+          } else {
+            session()->flash('status', 'Berhasil tambah data');
+            return redirect()->back();
+          }
+        } else {
+          session()->flash('status', 'Gagal tambah data');
+          return redirect()->back();
+        }
+      } else {
+        session()->flash('status', 'Tidak ada file ada gambar terlalu besar');
+        return redirect()->back();
+      }
+    }
+
+    function compressImage($source)
+    {
+      $filepath = public_path('assets/user/img/'.$source);
+      $mime = mime_content_type($filepath);
+      $output = new \CURLFile($filepath, $mime, $source);
+      $data = ["files" => $output];
+
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, 'http://api.resmush.it/?qlty=70');
+      curl_setopt($ch, CURLOPT_POST,1);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+      $result = curl_exec($ch);
+      if (curl_errno($ch)) {
+          $result = curl_error($ch);
+      }
+      curl_close ($ch);
+
+      $arr_result = json_decode($result);
+
+      // store the optimized version of the image
+      $ch = curl_init($arr_result->dest);
+      $fp = fopen($filepath, 'wb');
+      curl_setopt($ch, CURLOPT_FILE, $fp);
+      curl_setopt($ch, CURLOPT_HEADER, 0);
+      curl_exec($ch);
+      curl_close($ch);
+      fclose($fp);
     }
 }

@@ -3,6 +3,14 @@
 @section('content')
 <div class="container">
   <div id="content" class="background-siswa">
+    <div style="position: absolute; margin-left: -130px; margin-top: 1px;" class="row">
+      <div class="col">
+       <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+            <i class="glyphicon glyphicon-align-left fa fa-bars fa-2x"></i>
+            <!-- <img src="img/menu_toggle.png" alt=""> -->
+        </button>
+        </div>
+    </div>
      <!-- search box -->
     <div style="padding-left: 700px; top: 13px; position: absolute;" >
     <img style="width:27%; padding-right: 20px;" src="{{ asset('guru/img/bell.png') }}"/>

@@ -41,7 +41,7 @@
         <div class="row mt-4">
         </div>
         <div class="row">
-          <form class="" action="{{ url('staf/add') }}" method="post" enctype="multipart/form-data">
+          <form class="" action="{{ url('staf/siswa-tambah') }}" method="post" enctype="multipart/form-data">
             @csrf
           <div class="ml-4 mr-4 mt-4 mb-4">
             <div class="form-row">
@@ -58,15 +58,23 @@
               <label for="inputAddress">Nama</label>
               <input type="text" class="form-control" id="name" placeholder="Nama..." name="name">
             </div>
+            <div class="form-group">
+              <label for="inputState" name="level">Kelas</label>
+              <select id="level" class="form-control" name="kelas">
+                @foreach($kelas as $k)
+                <option value="{{ $k->kelas}}">{{ $k->kelas}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inputState" name="Semester">Semester</label>
+              <select id="level" class="form-control" name="level">
+                @foreach($smt as $k)
+                <option value="{{ $k->semester}}">{{ $k->semester}}</option>
+                @endforeach
+              </select>
+            </div>
             <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="inputState" name="level">Level</label>
-                <select id="level" class="form-control" name="level">
-                  <option value="admin" selected>Admin</option>
-                  <option value="guru">Guru</option>
-                  <option value="siswa">Siswa</option>
-                </select>
-              </div>
               <div class="form-group col-md-8">
                 <label for="exampleFormControlFile1">Photo</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imageUser">

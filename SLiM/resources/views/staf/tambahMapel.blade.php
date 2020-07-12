@@ -72,7 +72,7 @@
                 <div class="md-form md-outline">
                   <input type="time" id="default-picker" name="jam" class="form-control" placeholder="Select time">
                   <label for="default-picker">Jam mulai</label>
-                  <input type="time" id="default-picker" class="form-control" placeholder="Select time">
+                  <input type="time" id="default-picker" name="jamAkhir" class="form-control" placeholder="Select time">
                   <label for="default-picker">Jam berakhir</label>
                 </div>
               <button type="submit" class="btn btn-primary" id="tambahMapel">Tambah</button>

@@ -3,10 +3,18 @@
 @section('content')
 <div class="container">
   <div id="content" class="background-siswa">
+    <div style="position: absolute; margin-left: -130px; margin-top: 1px;" class="row">
+      <div class="col">
+       <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+            <i class="glyphicon glyphicon-align-left fa fa-bars fa-2x"></i>
+            <!-- <img src="img/menu_toggle.png" alt=""> -->
+        </button>
+        </div>
+    </div>
      <!-- search box -->
     <div style="padding-left: 700px; top: 13px; position: absolute;" >
-    <img style="width:27%; padding-right: 20px;" src="img/bell.png"/>
-    <img class="rounded-circle"width="30%" src="img/1.jpeg"/>
+    <img style="width:27%; padding-right: 20px;" src="{{ asset('guru/img/bell.png') }}"/>
+    <img class="rounded-circle"width="30%" src="{{ asset('guru/img/1.jpeg') }}"/>
     </div>
     <span style="position: absolute; top: 20px; padding-left: 75%;"><p>Muhammad Farraseka</p></span>
     <div style="clear: both;"></div>
@@ -15,7 +23,7 @@
       <h2 style="color : white; ">Home</h2>
     </div>
     <div style="float: left;">
-      <img id="icon-home" src="img/home_icon.png">
+      <img id="icon-home" src="{{ asset('guru/img/home_icon.png') }}">
     </div>
       <p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Tugas Siswa</p>
     <div style="clear: both;"></div><br><br>
@@ -30,6 +38,7 @@
      <table class="table" style="background-color: white;">
               <thead>
               <tr>
+                <th scope="col">No.</th>
                 <th scope="col">Hari</th>
                 <th scope="col">Mata Pelajaran</th>
                 <th scope="col">kelas</th>
@@ -37,79 +46,17 @@
               </tr>
             </thead>
             <tbody>
+              <?php $no = 1; ?>
+              @foreach($data as $d)
               <tr>
-                <th scope="row">Senin</th>
-                <td>MTK</td>
-                <td>12 A</td>
-                <td>07.00 - 09.15</td>
+                <td>{{ $no }}</td>
+                <td>{{ $d->hari }}</td>
+                <td>{{ $d->mata_pelajaran }}</td>
+                <td>{{ $d->kelas }}</td>
+                <td>{{ $d->jam }}</td>
               </tr>
-              <tr>
-                <th scope="row">Senin</th>
-                <td>MTK</td>
-                <td>12 C</td>
-                <td>10.00 - 11.00</td>
-              </tr>
-              <tr>
-                <th scope="row">Senin</th>
-                <td>FISIKA</td>
-                <td>12 B</td>
-                <td>13.00 - 14.30</td>
-              </tr>
-
-
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-
-
-                <th scope="row">Selasa</th>
-                <td>FISIKA</td>
-                <td>12 B</td>
-                <td>07.00 - 09.15</td>
-              </tr>
-              <tr>
-                <th scope="row">Selasa</th>
-                <td>MTK</td>
-                <td>12 A</td>
-                <td>10.00 - 11.00</td>
-              </tr>
-              <tr>
-                <th scope="row">Selasa</th>
-                <td>MTK</td>
-                <td>12 C</td>
-                <td>13.00 - 14.30</td>
-              </tr>
-
-               <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-
-
-                <th scope="row">Rabu</th>
-                <td>MTK</td>
-                <td>12 C</td>
-                <td>07.00 - 09.15</td>
-              </tr>
-              <tr>
-                <th scope="row">Rabu</th>
-                <td>FISIKA</td>
-                <td>12 B</td>
-                <td>10.00 - 11.00</td>
-              </tr>
-              <tr>
-                <th scope="row">Rabu</th>
-                <td>MTK</td>
-                <td>12 A</td>
-                <td>13.00 - 14.30</td>
-              </tr>
+              <?php $no++; ?>
+              @endforeach
             </tbody>
         </table>
   </div>
