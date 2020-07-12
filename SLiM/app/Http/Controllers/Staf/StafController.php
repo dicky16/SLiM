@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Staf;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 
@@ -162,6 +163,47 @@ class StafController
 
     public function pelajaran()
     {
-      return view('staf/pelajaran');
+      $data = DB::table('jadwal_pelajaran as jadwal')
+      ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
+      ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
+      ->join('users', 'jadwal.id_guru', '=', 'users.id')
+      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->get();
+      // dd($data);
+      return view('staf/pelajaran', ['data' => $data]);
+    }
+
+    public function mapel()
+    {
+      $user = User::select('name')->where('level', 'guru')->get();
+      // dd($user);
+      $kelas = DB::table('tabel_kelas')->pluck('kelas');
+      $mapel = DB::table('tabel_mata_pelajaran')->pluck('mata_pelajaran');
+      return view('staf/tambahMapel', compact('user', 'kelas', 'mapel'));
+    }
+
+    public function postMapel(Request $request)
+    {
+      $id_mapel = DB::table('tabel_mata_pelajaran')
+      ->select('id')->where('mata_pelajaran', '=', $request->mapel)->value('id');
+      // dd($id_mapel);
+      $id_kelas = DB::table('tabel_kelas')
+      ->select('id')->where('kelas', '=', $request->kelas)->value('id');
+      $id_guru = DB::table('users')
+      ->select('id')->where('name', '=', $request->guru)->value('id');
+      $mapel = DB::table('jadwal_pelajaran')->insert(
+        [
+          'hari' => $request->input('hari'),
+          'id_mata_pelajaran' => $id_mapel,
+          'id_kelas' => $id_kelas,
+          'jam' => $request->input('jam'),
+          'id_guru' => $id_guru,
+        ]
+      );
+      if($mapel) {
+        return redirect('staf/add-mapel')->with(['status', 'berhasil tambah data']);
+      } else {
+        return redirect('staf/add-mapel')->with(['status', '0']);
+      }
     }
 }

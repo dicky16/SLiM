@@ -16,6 +16,8 @@ Route::group(['middleware' => ['cekAdmin']], function () {
     Route::get('/', 'Staf\StafController@index')->name('staf');
     Route::get('add', 'Staf\StafController@getAddUSer');
     Route::post('add', 'Staf\StafController@addUser');
+    Route::get('add-mapel', 'Staf\StafController@mapel');
+    Route::post('add-mapel', 'Staf\StafController@postMapel');
     Route::get('siswa', 'Staf\StafController@getAturSiswa');
     Route::get('guru', 'Staf\StafController@getAturGuru');
     Route::get('admin', 'Staf\StafController@getAturAdmin');
@@ -38,9 +40,22 @@ Route::group(['middleware' => ['cekAdmin']], function () {
   });
 });
 
-Route::prefix('siswa')->group(function () {
-  Route::get('/', 'Siswa\SiswaController@index');
-  Route::get('absensi', 'Siswa\SiswaController@absensi');
+Route::group(['middleware' => ['cekSiswa']], function () {
+  Route::prefix('siswa')->group(function () {
+    Route::get('/', 'Siswa\SiswaController@index');
+    Route::get('absensi', 'Siswa\SiswaController@absensi');
+    Route::get('jadwal', 'Siswa\SiswaController@jadwal');
+    Route::get('tugas', 'Siswa\SiswaController@tugas');
+    Route::get('kelas', 'Siswa\SiswaController@kelas');
+    Route::get('kelas-detail', 'Siswa\SiswaController@detailKelas');
+    Route::get('calender', 'Siswa\SiswaController@calender');
+  });
+});
+
+Route::group(['middleware' => ['cekGuru']], function () {
+  Route::prefix('guru')->group(function () {
+    Route::get('/', 'Guru\GuruController@index');
+  });
 });
 
 // Route::get('tesdb', 'Staf\StafController@tesdb');
@@ -49,5 +64,8 @@ Route::get('logout', 'LoginController@logout');
 Route::post('login', 'LoginController@cekLogin');
 
 Route::get('/{any}', function () {
+    return view('welcome');
+});
+Route::get('/', function () {
     return view('welcome');
 });

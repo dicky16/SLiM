@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="col-6">
-            <a href="add"><button class="btn btn-primary float-right"><i class="fas fa-plus"></i></button></a>
+            <a href="{{ url('staf/add-mapel') }}"><button class="btn btn-primary float-right"><i class="fas fa-plus"></i></button></a>
           </div>
         </div>
         <div class="row">
@@ -73,19 +73,19 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($data as $dt)
                 <tr>
-
-                  <th scope="row">1</th>
-                  <td>2</td>
-                  <td>kelas</td>
-                  <td>ok</td>
-                  <td>pass</td>
+                  <td>{{$dt->hari}}</td>
+                  <td>{{$dt->mata_pelajaran}}</td>
+                  <td>{{$dt->kelas}}</td>
+                  <td>{{$dt->jam}}</td>
+                  <td>{{$dt->name}}</td>
                   <td>
                     <a href=""><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a> |
                     <a href=""><button class="btn btn-success"><i class="far fa-edit"></i></button></a>
                   </td>
                 </tr>
-
+                @endforeach
               </tbody>
             </table>
 

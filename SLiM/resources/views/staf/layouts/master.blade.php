@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{{ asset('staf/css/style.css') }}">
     <script src="https://kit.fontawesome.com/2ee1f2fc44.js" crossorigin="anonymous"></script>
+
+
     <!-- <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script> -->
   </head>
   <body>
@@ -293,6 +295,48 @@
                       }
                     }
                   });
+
+                  //ajax tambah mapel
+                  // $("#tambahMapel").click(function(e) {
+                  //   e.preventDefault();
+                  //   var hari = $("#hari").val();
+                  //   var m = document.getElementById("mapel");
+                  //   var mapel = m.options[m.selectedIndex].value;
+                  //
+                  //   var k = document.getElementById("kelas");
+                  //   var kelas = k.options[k.selectedIndex].value;
+                  //
+                  //   var g = document.getElementById("guru");
+                  //   var guru = g.options[g.selectedIndex].value;
+                  //
+                  //   var jam = $("#default-picker").val();
+                  //
+                  //   if(hari == "" || mapel == "" || kelas == "" || guru == "" || jam == "") {
+                  //     alert('data tidak boleh kosong')
+                  //   } else {
+                  //       $.ajax({
+                  //         type: 'POST',
+                  //         url:"{{ url('/staf/add-mapel') }}",
+                  //         data:{hari:hari,mapel:mapel,kelas:kelas,guru:guru,jam:jam},
+                  //         dataType: 'json',
+                  //         success:function(data) {
+                  //           if(data.status == '1') {
+                  //             Swal.fire(
+                  //               'Sukses tambah data',
+                  //               'success'
+                  //             )
+                  //             location.reload();
+                  //           } else {
+                  //             Swal.fire({
+                  //               icon: 'error',
+                  //               title: 'Oops...',
+                  //               text: 'Gagal tambah data',
+                  //             })
+                  //           }
+                  //         }
+                  //       });
+                  //   }
+                  // });
 
              });
          </script>

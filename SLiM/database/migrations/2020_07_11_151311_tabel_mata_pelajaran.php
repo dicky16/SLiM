@@ -13,9 +13,23 @@ class TabelMataPelajaran extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('jadwal_pelajaran', function (Blueprint $table) {
+          // $table->foreign('user_id')->references('id')->on('users');
             $table->bigIncrements('id');
+            $table->string('hari');
+            $table->integer('id_mata_pelajaran');
+            $table->integer('id_kelas');
+            $table->string('jam');
+            $table->integer('id_guru');
             $table->timestamps();
+
+            $table->foreign('id_mata_pelajaran')
+            ->references('id')
+            ->on('tabel_mata_pelajaran');
+
+            $table->foreign('id_kelas')
+            ->references('id')
+            ->on('tabel_kelas');
         });
     }
 

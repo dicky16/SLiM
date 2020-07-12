@@ -14,9 +14,10 @@ class LoginController extends Controller
       if($role == "admin") {
         return redirect('staf');
       } else if($role == "guru") {
-        return 'guru';
+        // dd($role);
+        return redirect('guru');
       } else if($role == "siswa") {
-        return 'siswa';
+        return redirect('siswa');
       }
     }
     return view('login');

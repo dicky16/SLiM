@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-class CekAdmin
+
+class CekGuru
 {
     /**
      * Handle an incoming request.
@@ -21,9 +22,9 @@ class CekAdmin
       }
       // $user = Auth::user();
       $role = Auth::user()->level;
-      if($role == "admin") {
+      if($role == "guru") {
         return $next($request);
       }
-      return redirect()->back();
+      return redirect('login');
     }
 }

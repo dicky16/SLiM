@@ -22,27 +22,27 @@
                 </div>
                 <ul class="list-unstyled components">
                       <img src="{{ asset('siswa/img/home.png') }}" class="mr-3 ml-3">
-                      <a href="siswa" style="color: black">Home</a>
+                      <a href="{{ url('siswa')}}" style="color: black">Home</a>
                       <br>
                       <br>
                       <img src="{{ asset('siswa/img/absensi.png') }}" class="mr-3 ml-3">
-                      <a href="absensi.php" style="color: black">Absensi</a>
+                      <a href="{{ url('siswa/absensi')}}" style="color: black">Absensi</a>
                       <br>
                       <br>
                       <img src="{{ asset('siswa/img/jadwal.png') }}" class="mr-3 ml-3">
-                      <a href="jadwal.php" style="color: black">Jadwal Pelajaran</a>
+                      <a href="{{ url('siswa/jadwal')}}" style="color: black">Jadwal Pelajaran</a>
                       <br>
                       <br>
                       <img src="{{ asset('siswa/img/tugas.png') }}" class="mr-3 ml-3">
-                      <a href="tugas.php" style="color: black">Tugas</a>
+                      <a href="{{ url('siswa/tugas')}}" style="color: black">Tugas</a>
                       <br>
                       <br>
                       <img src="{{ asset('siswa/img/kalender.png') }}" class="mr-3 ml-3">
-                      <a href="kalender.php" style="color: black">Calender</a>
+                      <a href="{{ url('siswa/kalender')}}" style="color: black">Calender</a>
                       <br>
                       <br>
                       <img src="{{ asset('siswa/img/kelas.png') }}" class="mr-3 ml-3">
-                      <a href="kelas.php" style="color: black">Kelas</a>
+                      <a href="{{ url('siswa/kelas')}}" style="color: black">Kelas</a>
                       <br>
                       <br>
                 </ul>

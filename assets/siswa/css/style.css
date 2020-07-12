@@ -217,7 +217,7 @@ toggle button
 }
 .text-nama{
   position: absolute;
-  top: 20px; 
+  top: 20px;
   padding-left: 75.4%;
 }
 
@@ -286,7 +286,7 @@ toggle button
     min-height: 30vh;
     transition: all 0.3s;
     position: relative;
-    padding-left: 40px; 
+    padding-left: 40px;
 }
 
 #content-detailkelas-01{
@@ -294,7 +294,7 @@ toggle button
     min-height: 30vh;
     transition: all 0.3s;
     position: relative;
-    padding-left: 40px; 
+    padding-left: 40px;
     background-color: #F6F9FC;
 }
 
@@ -319,10 +319,10 @@ toggle button
       transition: all 0.3s;
     }
     #sidebar {
-        margin-left: -250px;        
+        margin-left: -250px;
     }
     #sidebar.active {
-        margin-left: 0;        
+        margin-left: 0;
     }
     #sidebarCollapse span {
         display: none;
