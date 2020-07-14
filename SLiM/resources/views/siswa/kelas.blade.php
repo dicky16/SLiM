@@ -31,23 +31,19 @@
       <h3 style="color : white;">Kelas</h3>
 
       <div class="row text-siswa">
-        <div class="col-sm-3">
+        @foreach($data as $kelas)
+        <div class="col-sm-4" style="margin-top: 10px;">
           <div class="card">
             <div class="card-body">
-              <h5 id="text-matkul">Bahasa Indonesia</h5>
-              <h5>Senin, 03-07-2020</h5>
-              <a href="{{ url('siswa/kelas-detail') }}"><h5 style="color: red;">Lihat</h5></a>
+              <h5 id="text-content" align="center" class="margin-top">{{ $kelas->mata_pelajaran }}</h5>
+              <label class="mt-0">
+              <h5 align="center" class="card-title">{{ $kelas->hari}}, {{$kelas->jam}}</h5>
+              </label>
+              <a href="kelas-detail/{{$kelas->id}}/materi"><button type="button" class="btn btn-info float-right">Cek Kelas</button></a>
             </div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-matkul">Bahasa Indonesia</h5>
-              <h5>Senin, 03-07-2020</h5>
-            </div>
-          </div>
-        </div>
+        </div><br>
+        @endforeach
       </div>
   </div>
 </div>

@@ -12,26 +12,35 @@
       </div>
     </div>
 <!-- icon home  -->
-    <div style="float: left;">
-      <h2 style="color : white; ">Home</h2>
+    <div class="row">
+      <div class="col-1">
+        <h2 style="color : white; ">Home</h2>
+      </div>
+      <div class="col-1 ml-4">
+        <img id="icon-home" src="{{ asset('siswa/img/home_icon.png') }}">
+      </div>
+      <div class="col ml-4">
+        <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Dashboard</p></span>
+      </div>
+      <div class="col">
+        <div class="btn-group float-right" style="margin-top: 10px;">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ $user }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>
+            <a class="dropdown-item" href="{{ url('logout')}}">Logout</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div style="float: left;">
-      <img id="icon-home" src="{{ asset('siswa/img/home_icon.png') }}">
-    </div>
-    <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; FARAS</p></span>
-
-    <div style=" position: absolute;  padding-left: 700px; margin-top: -50px;">
-    <img style="width:27%; padding-right: 20px;" src="{{ asset('siswa/img/bell.png') }}" width="10" height="20">
-    <img class="rounded-circle" width="80" height="80" src="assets/user/img/{{ $img }}"/>
-    </div>
-    <span class="text-nama"><p>{{ $user }}</p></span>
-    <div style="clear: both;"></div>
+    <br>
       <!-- content dasboard -->
 
       <h3 style="color : white;">Kelas</h3>
 
       <div class="row text-siswa">
-        <div class="col-sm-3">
+        <div class="col-md-3 col-sm-6 mt-3 col-xs-6">
           <div class="card">
             <div class="card-body">
               <h5 id="text-matkul">Bahasa Indonesia</h5>
@@ -39,7 +48,23 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-md-3 col-sm-6 mt-3 col-xs-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 id="text-matkul">Bahasa Indonesia</h5>
+              <h5>Senin, 03-07-2020</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 sm-6 mt-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 id="text-matkul">Bahasa Indonesia</h5>
+              <h5>Senin, 03-07-2020</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 sm-6 mt-3">
           <div class="card">
             <div class="card-body">
               <h5 id="text-matkul">Bahasa Indonesia</h5>

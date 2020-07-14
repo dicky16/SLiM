@@ -46,10 +46,14 @@ Route::group(['middleware' => ['cekSiswa']], function () {
   Route::prefix('siswa')->group(function () {
     Route::get('/', 'Siswa\SiswaController@index');
     Route::get('absensi', 'Siswa\SiswaController@absensi');
+    Route::post('absensi', 'Siswa\SiswaController@postAbsen');
     Route::get('jadwal', 'Siswa\SiswaController@jadwal');
     Route::get('tugas', 'Siswa\SiswaController@tugas');
     Route::get('kelas', 'Siswa\SiswaController@kelas');
-    Route::get('kelas-detail/{id}', 'Siswa\SiswaController@detailKelas');
+    Route::get('profil', 'Siswa\SiswaController@profil');
+    // Route::get('kelas-detail/{id}', 'Siswa\SiswaController@detailKelas');
+    Route::get('kelas-detail/{id}/materi', 'Siswa\SiswaController@detailMateri');
+    Route::get('kelas-detail/{id}/tugas', 'Siswa\SiswaController@detailTugas');
     Route::get('calender', 'Siswa\SiswaController@calender');
   });
 });
@@ -60,13 +64,16 @@ Route::group(['middleware' => ['cekGuru']], function () {
     Route::get('absensi', 'Guru\GuruController@absensi');
     Route::post('absensi', 'Guru\GuruController@postAbsen');
     Route::get('jadwal', 'Guru\GuruController@jadwal');
+    Route::get('profil', 'Guru\GuruController@profil');
     Route::get('tugas', 'Guru\GuruController@tugas');
     Route::get('kelas', 'Guru\GuruController@kelas');
     // Route::get('kelas-detail/{id}', 'Guru\GuruController@detailKelas');
     Route::get('kelas-detail/{id}/materi', 'Guru\GuruController@detailMateri');
     Route::get('kelas-detail/{id}/tugas', 'Guru\GuruController@detailTugas');
     Route::get('kelas-detail/{id}/tugas-tambah', 'Guru\GuruController@tambahTugas');
+    Route::get('kelas-detail/{id}/materi-tambah', 'Guru\GuruController@tambahMateri');
     Route::post('tugas-tambah', 'Guru\GuruController@postTambahTugas');
+    Route::post('materi-tambah', 'Guru\GuruController@postTambahMateri');
     Route::get('calender', 'Guru\GuruController@calender');
   });
 });

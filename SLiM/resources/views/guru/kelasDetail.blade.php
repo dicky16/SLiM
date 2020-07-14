@@ -13,8 +13,8 @@
    </div>
      <!-- search box -->
     <div style="padding-left: 700px; top: 13px; position: absolute;" >
-    <img style="width:27%; padding-right: 20px;" src="img/bell.png"/>
-    <img class="rounded-circle"width="30%" src="img/1.jpeg"/>
+    <img style="width:27%; padding-right: 20px;" src="{{ asset('guru/img/bell.png') }}"/>
+    <img class="rounded-circle"width="30%" src="{{ asset('guru/img/1.jpeg') }}"/>
     </div>
     <span style="position: absolute; top: 20px; padding-left: 75%;"><p>Muhammad Farraseka</p></span>
     <div style="clear: both;"></div>
@@ -23,7 +23,7 @@
       <h2 style="color : white; ">Home</h2>
     </div>
     <div style="float: left;">
-      <img id="icon-home" src="img/home_icon.png">
+      <img id="icon-home" src="{{ asset('guru/img/home_icon.png') }}">
     </div>
       <p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Kelas {{$data[0]->kelas}}</p>
       <h1 class="text-white text-center">{{$data[0]->mata_pelajaran}}</h1>
@@ -31,12 +31,12 @@
     <div style="clear: both;"></div>
 
     <!--Content-->
-    <div class="form-group has-search">
+    <!-- <div class="form-group has-search">
         <div id="main-search">
         <span class="fa fa-search form-control-feedback"></span>
         <input type="text" class="form-control" placeholder="Search">
         </div>
-      </div>
+      </div> -->
   </div>
     <div  id="content-detailkelas-01" >
       <!-- <div style="text-align: center; padding-top: 50px;">

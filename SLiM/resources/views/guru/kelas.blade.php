@@ -45,39 +45,6 @@
             </div>
           </div>
         </div><br>
-        <!-- <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-content" align="center" class="margin-top">KELAS 12 C</h5>
-              <label class="mt-0">
-              <h5 align="center" class="card-title">Senin, 08.15 - 09.25</h5>
-              </label>
-              <button type="button" class="btn btn-info float-right">Cek Kelas</button>
-            </div>
-          </div>
-        </div> -->
-        <!-- <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-content" align="center" class="margin-top">KELAS 12 B</h5>
-              <label class="mt-0">
-              <h5 align="center" class="card-title">Senin, 11.00 - 12.00</h5>
-              </label>
-              <button type="button" class="btn btn-info float-right">Cek Kelas</button>
-            </div>
-          </div>
-        </div> -->
-        <!-- <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-content" align="center" class="margin-top">KELAS 12 D</h5>
-              <label class="mt-0">
-              <h5 align="center" class="card-title">Senin, 12.30 - 14.00</h5>
-              </label>
-              <button type="button" class="btn btn-info float-right">Cek Kelas</button>
-            </div>
-          </div>
-        </div> -->
         @endforeach
      </div>
      <br><br>

@@ -139,8 +139,11 @@ class GuruController
       ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
       ->where('jadwal.id', $id)
       ->get();
-      // dd($data);
-      return view('guru/kelasDetailMateri', ['data' => $data]);
+
+      $materi = DB::table('materi')->get();
+      // dd($materi[0]);
+
+      return view('guru/kelasDetailMateri', ['data' => $data, 'materi' => $materi]);
     }
 
     public function detailTugas($id)
@@ -167,6 +170,57 @@ class GuruController
       ->get();
       // dd($data[0]);
       return view('guru/tambahTugas', ['data' => $data]);
+    }
+
+    public function tambahMateri($id)
+    {
+      $data = DB::table('jadwal_pelajaran as jadwal')
+      ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
+      ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
+      ->join('users', 'jadwal.id_guru', '=', 'users.id')
+      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name', 'kelas.id as id_kelas', 'mapel.id as id_mapel')
+      ->where('jadwal.id', $id)
+      ->get();
+
+      // dd($data[0]);
+      return view('guru/tambahMateri', ['data' => $data]);
+    }
+
+    public function postTambahMateri(Request $request)
+    {
+      $this->timeZone('Asia/Jakarta');
+
+      $file = $request->file('fileUp');
+
+      $nama_guru = Auth::user()->name;
+      $judul_tugas = $request->nama;
+      $deskripsi = $request->deskripsi;
+      $file_path = $this->uploadFile($file, './assets/user/materi', 'materi');
+      $deadline = $request->deadline;
+      // dd($deadline);
+      $id_kelas = $request->id_kelas;
+      $id_mata_pelajaran = $request->id_mapel;
+      $tanggal_buat = date('d:m:y H:m:i');
+
+      $data = DB::table('materi')->insert([
+        'nama_guru' => $nama_guru,
+        'judul_materi' => $judul_tugas,
+        'file_path' => $file_path,
+        'id_kelas' => $id_kelas,
+        'id_mata_pelajaran' => $id_mata_pelajaran,
+      ]);
+      if($data) {
+        session()->flash('status', 'success upload tugas!');
+        return redirect()->back();
+      } else {
+        session()->flash('status', 'gagal upload tugas!');
+        return redirect()->back();
+      }
+    }
+
+    public function profil()
+    {
+      return view('guru/profil');
     }
 
     public function postTambahTugas(Request $request)

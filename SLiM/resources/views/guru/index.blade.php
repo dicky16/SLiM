@@ -12,11 +12,7 @@
         </div>
     </div>
      <!-- search box -->
-    <div style="padding-left: 700px; top: 13px; position: absolute;" >
-    <img style="width:27%; padding-right: 20px;" src="{{ asset('guru/img/bell.png') }}"/>
-    <img class="rounded-circle"width="30%" src="{{ asset('guru/img/1.jpeg') }}"/>
-    </div>
-    <span style="position: absolute; top: 20px; padding-left: 75%;"><p>{{ $user }}</p></span>
+
     <div style="clear: both;"></div>
 <!-- icon home  -->
     <div style="float: left;">
@@ -26,9 +22,20 @@
       <img id="icon-home" src="{{ asset('guru/img/home_icon.png') }}">
     </div>
       <p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Tugas Siswa</p>
-    <div style="clear: both;"></div><br><br>
-
-
+    <div style="clear: both;"></div>
+       <!-- Example single danger button -->
+<!-- Example single danger button -->
+	<div style="position: relative; padding-left: 840px;">
+	    <div class="btn-group">
+	      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	        {{ $user }}
+	      </button>
+	      <div class="dropdown-menu">
+	        <a class="dropdown-item" href="{{ url('guru/profil')}}">Profile</a>
+	        <a class="dropdown-item" href="">Logout</a>
+	      </div>
+	    </div>
+    </div>
 
     <!-- content dasboard -->
       <hr>

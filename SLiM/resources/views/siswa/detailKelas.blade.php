@@ -27,7 +27,7 @@
     <img width="30%" src="img/akun.png"/>
     </div>
     <span class="text-nama"><p>Muchammad Muchib</p></span>
-    <h1 class="text-white text-center">Bahasa Indonesia</h1>
+    <h1 class="text-white text-center">{{ $data[0]->mata_pelajaran }}</h1>
     <div style="clear: both;"></div>
       <div class="form-group has-search">
         <div id="main-search">
@@ -37,7 +37,7 @@
       </div>
   </div>
     <div  id="content-detailkelas-01" >
-      <div style="text-align: center; padding-top: 50px;">
+      <!-- <div style="text-align: center; padding-top: 50px;">
         <button style="background: #103156;" type="button" class="btn btn-lg text-white">Materi</button>
         <button style="background: #11CDEF;" type="button" class="btn btn-lg text-white">Tugas Kelas</button>
       </div>
@@ -48,7 +48,8 @@
         <button id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
         <button id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
         <button id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
-      </div>
+      </div> -->
+      @yield('isi')
     </div>
 </div>
 @endsection

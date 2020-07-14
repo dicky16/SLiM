@@ -23,24 +23,60 @@
 
     <div style=" position: absolute;  padding-left: 700px; margin-top: -50px;">
     <img style="width:27%; padding-right: 20px;" src="{{ asset('siswa/img/bell.png') }}">
-    <img width="30%" src="{{ asset('siswa/img/akun.png') }}"/>
+    <img width="30%" src="{{ asset('siswa/img/.png') }}"/>
     </div>
     <span class="text-nama"><p>Muchammad Muchib</p></span>
     <div style="clear: both;"></div>
       <!-- content dasboard -->
-
+      <?php
+      date_default_timezone_set("Asia/Jakarta");
+        $date = date("l");
+        $hari = null;
+        $time = date("h:i:s a");
+        if($date == "Sunday") {
+          $hari = "Minggu";
+        } else if($date == "Monday") {
+          $hari = "Senin";
+        } else if($date == "Tuesday") {
+          $hari = "Selasa";
+        } else if($date == "Wednesday") {
+          $hari = "Rabu";
+        } else if($date == "Thursday") {
+          $hari = "Kamis";
+        } else if($date == "Friday") {
+          $hari = "Jum'at";
+        } else if($date == "Saturday") {
+          $hari = "Sabtu";
+        }
+       ?>
+      <h3 style="color: white;" align="center">{{ $info['status'] }}</h3>
       <div style="clear: both;"></div><br><br>
+
+      <form action="{{ url('siswa/absensi') }}" method="post">
+        @csrf
       <div class="row text-absensi">
         <div class="col-sm-3 mx-auto">
           <div class="card">
             <div class="card-body">
-              <h5 id="text-matkul">Bahasa Indonesia</h5>
-              <h5>Senin, 03-07-2020</h5>
-              <a href="" style="text-decoration: none; color: #ff3333;"><h6>Absen</h6></a>
+
+              <h5 id="text-matkul">{{ $hari}}</h5>
+              <h5>{{ $time }}</h5>
+              <button type="submit" class="btn btn-success" value="1" name="btnIn" {{ $info['btnIn'] }}>Absen Masuk</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 mx-auto">
+          <div class="card">
+            <div class="card-body">
+              <h5 id="text-matkul">{{ $hari }}</h5>
+              <h5>{{ $time }}</h5>
+              <button type="submit" class="btn btn-danger" value="1" name="btnOut" {{ $info['btnOut'] }}>Absen Keluar</button>
             </div>
           </div>
         </div>
       </div>
+    </form>
+
   </div>
 
 
@@ -52,49 +88,32 @@
   <table class="table">
     <thead>
     <tr style="background-color: #F6F9FC;">
-      <th scope="col">KODE</th>
-      <th scope="col">CREATED AT</th>
-      <th scope="col">Kelas</th>
+      <th scope="col">Tanggal</th>
+      <th scope="col">Absen Masuk</th>
       <th scope="col">Alpha</th>
       <th scope="col">Ijin</th>
       <th scope="col">Hadir</th>
+      <th scope="col">Absen Keluar</th>
       <th scope="col">Tatap Muka</th>
       <th scope="col">Prosentase</th>
     </tr>
   </thead>
   <tbody>
+    @foreach($dataAbsen as $absen)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
+      <td>{{ $absen->date }}</td>
+      <td>{{ $absen->time_in }}</td>
       <td>Otto</td>
       <td>@mdo</td>
       <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <td>{{ $absen->time_out }}</td>
       <td>@mdo</td>
       <td>@mdo</td>
     </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-    </tr>
+    @endforeach
   </tbody>
   </table>
+  {!! $dataAbsen->links() !!}
 </div>
 <!-- end tabel -->
 

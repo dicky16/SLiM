@@ -7,42 +7,38 @@
 <div class="container">
   <div id="content" class="bg-dark">
 
-      <nav class="navbar navbar-default bg-dark">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col">
-                  <!-- <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                      <i class="glyphicon glyphicon-align-left"></i>
-                      <img src="{{ asset('staf/img/Menu.png') }}" alt="">
-                  </button> -->
-                  <h2 style="color : white;">Home</h2>
-                </div>
-                <div class="col-4">
-                  <img src="{{ asset('staf/img/Home.png') }}">
-                </div>
-                <div style="color : white;" class="col">
-                  <span>User management - Admin</span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col mt-4">
-                  <img src="{{ asset('staf/img/bell.png') }}">
-                </div>
-                <div class="col mr-4">
-                  <img class="rounded-circle" src="{{ asset('staf/img/photo.jpg') }}" width="80" height="80">
-                </div>
-                <div style="color : white;" class="col mt-4">
-                  <span class="float-right">Admin</span>
-                </div>
-              </div>
-
-
-
-              <!-- <div class="col">
-                <a href="user/logout.php"><button type="button" class="btn btn-info navbar-btn float-right">Logout</button></a>
-              </div> -->
+  <div style="position: absolute; margin-left: -130px; margin-top: 15px;" class="row">
+    <div class="col">
+     <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+          <i class="glyphicon glyphicon-align-left fa fa-bars fa-2x"></i>
+          <!-- <img src="img/menu_toggle.png" alt=""> -->
+      </button>
+      </div>
+    </div>
+<!-- icon home  -->
+    <div class="row">
+      <div class="col-1">
+        <h2 style="color : white; ">Home</h2>
+      </div>
+      <div class="col-1 ml-4">
+        <img style="  width:20px; margin-left: 40px; margin-top: 20px;" src="{{ asset('siswa/img/home_icon.png') }}">
+      </div>
+      <div class="col ml-4">
+        <span><p style="padding-top: 22px;  font-size: 12px;">&nbsp;&nbsp; &nbsp;User management &nbsp; - &nbsp;Admin</p></span>
+      </div>
+      <div class="col">
+        <div class="btn-group float-right" style="margin-top: 10px;">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>
+            <a class="dropdown-item" href="{{ url('logout')}}">Logout</a>
           </div>
-      </nav>
+        </div>
+      </div>
+    </div>
+    <br>
 
       <h2 style="color : white;">Admin</h2>
       <div class="container" style="background-color: white;" >
@@ -60,9 +56,10 @@
             <button class="btn btn-primary float-right"><i class="fas fa-plus"></i></button>
           </div>
         </div>
-        <div class="row">
 
-          <table class="table">
+        <div class="row">
+          <div class="table-responsive">
+           <table class="table">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">NIS</th>
@@ -93,10 +90,9 @@
                 @endforeach
               </tbody>
             </table>
-
-        </div>
+         </div>
       </div>
-
+     </div>
   </div>
 </div>
 @if($msg = Session::get('delete'))

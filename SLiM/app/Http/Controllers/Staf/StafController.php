@@ -182,7 +182,7 @@ class StafController
         $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->save();
         if($user) {
           return response(['status' => '1']);
@@ -248,6 +248,7 @@ class StafController
     {
       $kelas = DB::table('tabel_kelas')->get();
       $smt = DB::table('tabel_semester')->get();
+      // dd($smt);
       return view('staf/tambahSiswa', compact(['kelas', 'smt']));
     }
 

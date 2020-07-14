@@ -306,9 +306,11 @@ toggle button
   border-radius: 100px;
 }
 
-.row .col .toogle{
-  position: absolute;
+
+.akun {
+  padding-left: 1000px;
 }
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -333,4 +335,28 @@ toggle button
     .text-nama{
       display: none;
     }
+
+}
+
+@media (min-width: 576px) {
+  #content{
+    padding: 5px;
+    min-height: 100vh;
+    transition: all 0.3s;
+  }
+  #sidebar {
+      margin-left: -250px;
+  }
+  #sidebar.active {
+      margin-left: 0;
+  }
+  #sidebarCollapse span {
+      display: none;
+  }
+  #main-search{
+    width: 100%;
+  }
+  .text-nama{
+    display: none;
+  }
 }

@@ -68,9 +68,9 @@
             </div>
             <div class="form-group">
               <label for="inputState" name="Semester">Semester</label>
-              <select id="level" class="form-control" name="level">
-                @foreach($smt as $k)
-                <option value="{{ $k->semester}}">{{ $k->semester}}</option>
+              <select id="level" class="form-control" name="semester">
+                @foreach($smt as $s)
+                <option value="{{ $s->semester}}">{{ $s->semester}}</option>
                 @endforeach
               </select>
             </div>

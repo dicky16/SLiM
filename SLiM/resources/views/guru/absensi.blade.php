@@ -104,7 +104,7 @@
       <td>Otto</td>
       <td>@mdo</td>
       <td>@mdo</td>
-      <td>{{ $absen->time_in }}</td>
+      <td>{{ $absen->time_out }}</td>
       <td>@mdo</td>
       <td>@mdo</td>
     </tr>

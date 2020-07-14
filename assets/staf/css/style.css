@@ -225,6 +225,12 @@ input:checked + .slider:before {
     transition: all 0.3s;
 }
 
+#icon-home{
+  width:20px;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
