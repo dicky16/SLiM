@@ -22,6 +22,7 @@ class CekSiswa
       // $user = Auth::user();
       $role = Auth::user()->level;
       if($role == "siswa") {
+        \View::share(['user' => auth()->user()->name, 'img' => auth()->user()->img_path]);
         return $next($request);
       }
       return redirect()->back();

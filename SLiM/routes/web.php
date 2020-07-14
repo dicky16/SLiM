@@ -76,6 +76,8 @@ Route::get('login', 'LoginController@login');
 Route::get('logout', 'LoginController@logout');
 Route::post('login', 'LoginController@cekLogin');
 
+Route::get('tes', 'LoginController@tes');
+
 Route::get('/{any}', function () {
     return view('welcome');
 });

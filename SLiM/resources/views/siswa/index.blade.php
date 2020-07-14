@@ -18,13 +18,13 @@
     <div style="float: left;">
       <img id="icon-home" src="{{ asset('siswa/img/home_icon.png') }}">
     </div>
-    <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Dashboard</p></span>
+    <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; FARAS</p></span>
 
     <div style=" position: absolute;  padding-left: 700px; margin-top: -50px;">
-    <img style="width:27%; padding-right: 20px;" src="{{ asset('siswa/img/bell.png') }}">
-    <img width="30%" src="{{ asset('siswa/img/akun.png') }}"/>
+    <img style="width:27%; padding-right: 20px;" src="{{ asset('siswa/img/bell.png') }}" width="10" height="20">
+    <img class="rounded-circle" width="80" height="80" src="assets/user/img/{{ $img }}"/>
     </div>
-    <span class="text-nama"><p>Muchammad Muchib</p></span>
+    <span class="text-nama"><p>{{ $user }}</p></span>
     <div style="clear: both;"></div>
       <!-- content dasboard -->
 
