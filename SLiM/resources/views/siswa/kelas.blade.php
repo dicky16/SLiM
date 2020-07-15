@@ -25,7 +25,7 @@
       <div class="col">
         <div class="btn-group float-right" style="margin-top: 10px;">
           <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{ $user }}
+            {{ $user->name }}
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>

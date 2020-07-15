@@ -40,7 +40,7 @@
       <div class="col">
         <div class="btn-group float-right" style="margin-top: 10px;">
           <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{ $user }}
+            {{ $user->name }}
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>
@@ -105,7 +105,6 @@
   <!-- Tabel -->
   <div style="padding-top: 6px;" id="content-absensi" class="table-responsive">
   <p></p><h2 style="float: left;">Tabel Absensi</h2><br>
-  <button style="margin-top: -8px; float: right;" type="button" class="btn btn-outline-secondary">Export Absensi</button>
   <div style="clear: both;"></div><br>
   <table class="table">
     <thead>

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
+use Illuminate\Support\Facades\DB;
 class CekSiswa
 {
     /**
@@ -22,7 +23,14 @@ class CekSiswa
       // $user = Auth::user();
       $role = Auth::user()->level;
       if($role == "siswa") {
-        \View::share(['user' => auth()->user()->name, 'img' => auth()->user()->img_path]);
+        $data = DB::table('users')
+        ->join('tabel_kelas', 'users.id_kelas', '=', 'tabel_kelas.id')
+        ->join('tabel_semester', 'users.id_semester', '=', 'tabel_semester.id')
+        ->where('id_kelas', auth()->user()->id_kelas)
+        ->where('id_semester', auth()->user()->id_semester)
+        ->get();
+        // dd($data);
+        \View::share(['user' => $data[0]]);
         return $next($request);
       }
       return redirect()->back();

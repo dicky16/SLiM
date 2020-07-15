@@ -22,6 +22,7 @@ class CekAdmin
       // $user = Auth::user();
       $role = Auth::user()->level;
       if($role == "admin") {
+        \View::share(['user' => auth()->user()]);
         return $next($request);
       }
       return redirect()->back();

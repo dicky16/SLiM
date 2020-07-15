@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{{ asset('siswa/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('siswa/css/profil.css') }}">
-    <link rel="stylesheet" href="{{ asset('staf/css/style.css') }}">
     <script src="https://kit.fontawesome.com/2ee1f2fc44.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
@@ -21,33 +20,15 @@
                 <img src="{{ asset('staf/img/Menu.png') }}" alt="">
               </div> -->
                 <div class="sidebar-header">
-                    <a style="text-decoration: none;" href="{{url('login')}}"><img src="{{ asset('siswa/img/judul.png') }}"></a>
+                    <a style="text-decoration: none;" href="ot"><img src="{{ asset('siswa/img/judul.png') }}"></a>
                 </div>
                 <ul class="list-unstyled components">
-                      <img src="{{ asset('siswa/img/home.png') }}" class="mr-3 ml-3">
-                      <a href="{{ url('siswa')}}" style="color: black">Home</a>
-                      <br>
-                      <br>
+
                       <img src="{{ asset('siswa/img/absensi.png') }}" class="mr-3 ml-3">
-                      <a href="{{ url('siswa/absensi')}}" style="color: black">Absensi</a>
+                      <a href="{{ url('siswa/absensi')}}" style="color: black">Absensi Siswa</a>
                       <br>
                       <br>
-                      <img src="{{ asset('siswa/img/jadwal.png') }}" class="mr-3 ml-3">
-                      <a href="{{ url('siswa/jadwal')}}" style="color: black">Jadwal Pelajaran</a>
-                      <br>
-                      <br>
-                      <img src="{{ asset('siswa/img/tugas.png') }}" class="mr-3 ml-3">
-                      <a href="{{ url('siswa/tugas')}}" style="color: black">Tugas</a>
-                      <br>
-                      <br>
-                      <img src="{{ asset('siswa/img/kalender.png') }}" class="mr-3 ml-3">
-                      <a href="{{ url('siswa/calender')}}" style="color: black">Calender</a>
-                      <br>
-                      <br>
-                      <img src="{{ asset('siswa/img/kelas.png') }}" class="mr-3 ml-3">
-                      <a href="{{ url('siswa/kelas')}}" style="color: black">Kelas</a>
-                      <br>
-                      <br>
+
                 </ul>
             </nav>
 

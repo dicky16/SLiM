@@ -28,7 +28,7 @@
             {{ $user }}
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>
+            <a class="dropdown-item" href="{{ url('guru/profil')}}">Profile</a>
             <a class="dropdown-item" href="{{ url('logout')}}">Logout</a>
           </div>
         </div>

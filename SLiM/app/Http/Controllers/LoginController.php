@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -20,24 +22,39 @@ class LoginController extends Controller
         return redirect('siswa');
       }
     }
+
+    $sesi = session('ortu');
+    if($sesi == "login") {
+      return redirect('ot');
+    }
+
     return view('login');
   }
 
   public function cekLogin(Request $request)
   {
-    // $this->validate($request, [
-    //   'username' => 'required|string',
-    //   'password' => 'required|string',
-    // ]);
-    // $credentials = request(['email', 'password']);
+    $username = $request->email;
+    $password = $request->password;
+
+    $cek = DB::table('orangtua')
+    ->where('username', $username)->value("id_siswa");
+    // dd($cek > 0);
+    if($cek > 0) {
+      $passwd = DB::table('orangtua')
+      ->where('username', $username)->value("password");
+      $pass = Hash::check($password, $passwd);
+      session()->put('ortu', $cek);
+      return redirect('ot');
+    }
 
     if($user = Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-      // dd($user);
       return redirect('staf');
     } else {
       return redirect()->back()->with('status', 'salah!');;
     }
+
   }
+
   public function logout()
   {
     Auth::logout();

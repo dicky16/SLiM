@@ -12,24 +12,27 @@
       </div>
     </div>
 <!-- icon home  -->
-    <div style="float: left;">
-      <h2 style="color : white; ">Profil</h2>
-    </div>
-    <div style="float: left;">
-      <img id="icon-home" src="{{ asset('siswa/img/home_icon.png') }}">
-    </div>
-    <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Profil &nbsp; - &nbsp; Guru</p></span>
-    <div style=" position: absolute;  padding-left: 840px; margin-top: -35px;">
-    	<!-- Example single danger button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{ $user }}
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="{{url('guru/profil')}}">Profil</a>
-    <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
-  </div>
-</div>
+    <div class="row">
+      <div class="col-1">
+        <h2 style="color : white; ">Home</h2>
+      </div>
+      <div class="col-1 ml-4">
+        <img id="icon-home" src="{{ asset('siswa/img/home_icon.png') }}">
+      </div>
+      <div class="col ml-4">
+        <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Dashboard</p></span>
+      </div>
+      <div class="col">
+        <div class="btn-group float-right" style="margin-top: 10px;">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ $user }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url('guru/profil')}}">Profile</a>
+            <a class="dropdown-item" href="{{ url('logout')}}">Logout</a>
+          </div>
+        </div>
+      </div>
     </div>
     <div style="clear: both;"></div><br><br>
       <!-- content profil -->
@@ -46,7 +49,7 @@
                   <i class="fa fa-graduation-cap" aria-hidden="true"></i><br>
                   <p style="color: black;">Teacher</p>
                   <hr>
-                  <span>Email : farras@gmail.com </span><br>
+                  <span>Email : {{$email}} </span><br>
               </div>
           </div>
           <div class="row user-social-detail">

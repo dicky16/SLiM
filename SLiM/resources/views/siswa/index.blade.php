@@ -3,7 +3,6 @@
 @section('content')
 
 
-
 <div class="container">
 
 <div id="content" class="background-siswa">
@@ -29,7 +28,7 @@
       <div class="col">
         <div class="btn-group float-right" style="margin-top: 10px;">
           <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{ $user }}
+            {{ $user->name }}
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>
@@ -50,35 +49,12 @@
             <div class="card-body">
               <h5 id="text-matkul">{{$t->mata_pelajaran}}</h5>
               <h5>{{ $t->hari}}, {{$t->jam}}</h5>
-              <a href="siswa/kumpul-tugas/{{$t->id}}" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>
+              <a href="siswa/kelas-detail/{{$t->id}}/materi/{{$t->id_mapel}}" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>
             </div>
           </div>
         </div>
         @endforeach
-        <!-- <div class="col-md-3 col-sm-6 mt-3 col-xs-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-matkul">Bahasa Indonesia</h5>
-              <h5>Senin, 03-07-2020</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 sm-6 mt-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-matkul">Bahasa Indonesia</h5>
-              <h5>Senin, 03-07-2020</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 sm-6 mt-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-matkul">Bahasa Indonesia</h5>
-              <h5>Senin, 03-07-2020</h5>
-            </div>
-          </div>
-        </div> -->
+
       </div>
 
       <h3 style="color : white;">Jadwal Hari Ini</h3>
@@ -112,26 +88,18 @@
         </div>
       </div>
 
-      <div style="float: left;"><h3 style="color : white;">Tugas Belum Selesai</h3></div>
+      <div style="float: left;"><h3 style="color : white;">Tugas</h3></div>
       <!-- <h3><a style="text-decoration: none; float: right;" href="" class="btn btn-primary">Lihat Semua</a></h3>  -->
       <div style="clear: both;"></div>
       <div class="row text-siswa">
 
-        <!-- <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-matkul">Bahasa Indonesia</h5>
-              <h5>Senin, 03-07-2020</h5>
-              <a href="" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>
-            </div>
-          </div>
-        </div> -->
+
         @if($tugas != null)
         @foreach($tugas as $t)
         <div class="col-sm-3">
           <div class="card">
             <div class="card-body">
-              <h5 id="text-matkul">{{$t->mata_pelajaran}}</h5>
+              <h5 id="text-matkul">{{$t->judul_tugas}}</h5>
               <h5>{{$t->deadline}}</h5>
               <a href="{{url('siswa/kumpul-tugas/')}}/{{$t->id}}" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>
             </div>
@@ -150,8 +118,8 @@
 
       </div>
 
+    </div>
   </div>
 
-</div>
 
 @endsection

@@ -13,6 +13,11 @@ class StafController
       return view('staf/index');
     }
 
+    public function profil()
+    {
+      return view('staf/profil');
+    }
+
     public function tesdb()
     {
       $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/FirebaseKey.json');

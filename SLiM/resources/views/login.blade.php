@@ -15,8 +15,8 @@
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h2 style="text-align: center;color: white;">SLiM</h2>
-				<h6 style="text-align: center; color: white;">Selamat Datang!Silahkan Login Untuk Melanjutkan</h6>
+				<a style="text-decoration: none;" href=""><h2 style="text-align: center;color: white;">SLiM</h2></a>
+				<h6 style="text-align: center; color: white;">Selamat Datang ! Silahkan Login Untuk Melanjutkan</h6>
 			</div>
 			<div class="card-body">
 				<form action="{{ url('login') }}" method="post">

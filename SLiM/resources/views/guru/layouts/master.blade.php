@@ -22,7 +22,7 @@
                 <img src="{{ asset('staf/img/Menu.png') }}" alt="">
               </div> -->
                 <div class="sidebar-header">
-                    <a style="text-decoration: none;" href=""><img src="{{ asset('siswa/img/judul.png') }}"></a>
+                    <a style="text-decoration: none;" href="{{url('login')}}"><img src="{{ asset('siswa/img/judul.png') }}"></a>
                 </div>
                 <ul class="list-unstyled components">
                       <img src="{{ asset('siswa/img/home.png') }}" class="mr-3 ml-3">
@@ -42,7 +42,7 @@
                       <br>
                       <br>
                       <img src="{{ asset('siswa/img/kalender.png') }}" class="mr-3 ml-3">
-                      <a href="{{ url('guru/kalender')}}" style="color: black">Calender</a>
+                      <a href="{{ url('guru/calender')}}" style="color: black">Calender</a>
                       <br>
                       <br>
                       <img src="{{ asset('siswa/img/kelas.png') }}" class="mr-3 ml-3">
@@ -54,6 +54,7 @@
 
             <!-- Page Content Holder -->
             @yield('content')
+
         </div>
 
         <!-- Optional JavaScript -->

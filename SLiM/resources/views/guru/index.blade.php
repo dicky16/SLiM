@@ -1,11 +1,10 @@
 @extends('guru/layouts/master')
 @section('judul', 'guru')
 @section('content')
-<div class="row">
 
 <div class="container">
   <div id="content" class="background-siswa">
-    <div style="position: absolute; margin-left: -130px; margin-top: 1px;" class="row">
+        <div style="position: absolute; margin-left: -130px; margin-top: 1px;" class="row">
       <div class="col">
        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
             <i class="glyphicon glyphicon-align-left fa fa-bars fa-2x"></i>
@@ -14,10 +13,7 @@
         </div>
     </div>
      <!-- search box -->
-
-    <div style="clear: both;"></div>
-<!-- icon home  -->
-    <div class="row">
+      <div class="row">
       <div class="col-1">
         <h2 style="color : white; ">Home</h2>
       </div>
@@ -180,7 +176,6 @@
      </div>
 
   </div>
-</div>
 </div>
 
 @endsection

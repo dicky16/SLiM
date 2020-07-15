@@ -16,24 +16,11 @@ class SiswaController
       ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name', 'jadwal.id', 'mapel.id as id_mapel')
       ->where('jadwal.id_kelas', $this->getId())
       ->get();
+      // dd($kelas);
 
-      // $tugas = DB::table('tugas')
-      // ->join('tabel_mata_pelajaran as mapel', 'tugas.id_mata_pelajaran', '=', 'mapel.id')
-      // ->select('tugas.*', 'mapel.mata_pelajaran', 'mapel.id as id_mapel')
-      // ->where('id_kelas', auth()->user()->id_kelas)->get();
+      $tugas = DB::table('tugas')->get();
 
-      $tugas = DB::table('status_tugas')
-      ->join('tabel_mata_pelajaran as mpl' ,'status_tugas.id', '=', 'mpl.id')
-      ->select('status_tugas.*', 'mpl.mata_pelajaran')
-      ->where('status_tugas', 'finish')
-      ->where('status_tugas.id_user', auth()->user()->id)
-      ->get();
-      $cek = DB::table('status_tugas')->where('id_tugas', $tugas[0]->id)->get();
-      // dd($cek);
-      if($cek) {
-        $tugas = null;
-      }
-
+      // dd($tugas);
       $jadwal = DB::table('jadwal_pelajaran as jadwal')
       ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
       ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
@@ -170,7 +157,7 @@ class SiswaController
       ->where('tugas.id', $id)
       ->get();
       // dd($tugas[0]);
-      $cek = DB::table('status_tugas')->where('id_user', auth()->user()->id)->get();
+      $cek = DB::table('status_tugas')->where('id_user', auth()->user()->id)->value('id');
       $info = null;
       if($cek) {
         $info = array ([
@@ -251,17 +238,6 @@ class SiswaController
 
     public function detailMateri($id, $id_mapel)
     {
-      // $data = DB::table('jadwal_pelajaran as jadwal')
-      // ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
-      // ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
-      // ->join('users', 'jadwal.id_guru', '=', 'users.id')
-      // ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
-      // ->where('jadwal.id', $id)
-      // ->get();
-      // // dd($data);
-      // $materi = DB::table('materi')
-      // ->where('id_mata_pelajaran', $id_mapel)
-      // ->get();
       $data = DB::table('jadwal_pelajaran as jadwal')
       ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
       ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
@@ -279,25 +255,6 @@ class SiswaController
 
     public function detailTugas($id, $id_mapel)
     {
-      // $data = DB::table('jadwal_pelajaran as jadwal')
-      // ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
-      // ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
-      // ->join('users', 'jadwal.id_guru', '=', 'users.id')
-      // ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
-      // ->where('jadwal.id', $id)
-      // ->get();
-      //
-      // // $tugas = DB::table('tugas')
-      // // ->join('tabel_mata_pelajaran as mapel', 'tugas.id_mata_pelajaran', '=', 'mapel.id')
-      // // ->select('tugas.*', 'mapel.mata_pelajaran', 'mapel.id as id_mapel')
-      // // ->where('id_kelas', auth()->user()->id_kelas)->get();
-      // $tugas = DB::table('tugas')
-      // ->join('tabel_mata_pelajaran as mapel', 'tugas.id_mata_pelajaran', '=', 'mapel.id')
-      // ->select('tugas.*', 'mapel.mata_pelajaran')
-      // ->where('id_kelas', auth()->user()->id_kelas)
-      // ->where('id_mata_pelajaran', $id_mapel)
-      // ->get();
-      // dd($tugas);
       $data = DB::table('jadwal_pelajaran as jadwal')
       ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
       ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
@@ -318,6 +275,40 @@ class SiswaController
     public function profil()
     {
       return view('siswa/profil');
+    }
+
+    public function ortu()
+    {
+      return view('siswa/tambahOrtu');
+    }
+
+    public function postOrtu(Request $request)
+    {
+      $valid = $request->validate([
+        'nama' => 'required',
+        'username' => 'required',
+        'password' => 'required',
+      ]);
+
+      $nama = $request->nama;
+      $username = $request->username;
+      $password =	$request->password;
+      $id_siswa = auth()->user()->id;
+
+      $user = DB::table('orangtua')
+      ->insert([
+        'nama' => $nama,
+        'username' => $username,
+        'password' => bcrypt($password),
+        'id_siswa' => $id_siswa,
+      ]);
+
+      if($user) {
+        return redirect()->back()->with('status', 'sukses menambahkan Orang Tua');
+      } else {
+        return redirect()->back()->with('status', 'gagal');
+      }
+
     }
 
     function getId()

@@ -1,4 +1,4 @@
-@extends('siswa/layouts/master')
+@extends('guru/layouts/master')
   @section('judul', 'tugas')
   @section('content')
   <div class="container">
@@ -26,10 +26,10 @@
         <div class="col">
           <div class="btn-group float-right" style="margin-top: 10px;">
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ $user->name }}
+              {{ $user }}
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>
+              <a class="dropdown-item" href="{{ url('guru/profil')}}">Profile</a>
               <a class="dropdown-item" href="{{ url('logout')}}">Logout</a>
             </div>
           </div>

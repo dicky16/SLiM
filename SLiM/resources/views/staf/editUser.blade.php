@@ -10,11 +10,13 @@
   <div id="content" class="bg-dark">
 
   <div style="position: absolute; margin-left: -130px; margin-top: 8px;" class="row">
+    <div class="njajal">
     <div class="col">
      <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
           <i class="glyphicon glyphicon-align-left fa fa-bars fa-2x"></i>
           <!-- <img src="img/menu_toggle.png" alt=""> -->
       </button>
+      </div>
       </div>
     </div>
 <!-- icon home  -->
@@ -22,25 +24,24 @@
       <div class="col-1">
         <h2 style="color : white; ">Home</h2>
       </div>
-      <div class="col-1 ml-4">
-        <img style="  width:20px; margin-left: 80px; margin-top: 20px;" src="{{ asset('siswa/img/home_icon.png') }}">
+      <div class="col-0 ml-4">
+        <img class="img-akun" src="{{ asset('siswa/img/home_icon.png') }}">
       </div>
-      <div class="col ml-4">
-        <span><p style="padding-top: 22px;  font-size: 12px;">User Management - Admin</p></span>
+      <div class="col ml-2">
+        <span><p class="text-home">Edit user</p></span>
       </div>
       <div class="col">
         <div class="btn-group float-right" style="margin-top: 10px;">
           <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Admin
+            {{$user->name}}
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>
+            <a class="dropdown-item" href="{{ url('staf/profil')}}">Profile</a>
             <a class="dropdown-item" href="{{ url('logout')}}">Logout</a>
           </div>
         </div>
       </div>
     </div>
-    <br>
 
       <h2 style="color : white;">Ubah</h2>
       <div class="container" style="background-color: white;" >

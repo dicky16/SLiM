@@ -101,7 +101,15 @@ class GuruController
 
     public function tugas()
     {
-      return view('guru/tugas');
+      $tugas = DB::table('tugas')->get();
+      // dd($tugas);
+      return view('guru/tugas',compact('tugas'));
+    }
+
+    public function calender()
+    {
+
+      return view('guru/calender');
     }
 
     public function jadwal()
