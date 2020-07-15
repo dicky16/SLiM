@@ -14,19 +14,28 @@
       </div>
     </div>
 <!-- icon home  -->
-    <div style="float: left;">
-      <h2 style="color : white; ">Home</h2>
+   <div class="row">
+      <div class="col-1">
+        <h2 style="color : white; ">Home</h2>
+      </div>
+      <div class="col-1 ml-4">
+        <img id="icon-home" src="{{ asset('siswa/img/home_icon.png') }}">
+      </div>
+      <div class="col ml-4">
+        <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Kelas</p></span>
+      </div>
+      <div class="col">
+        <div class="btn-group float-right" style="margin-top: 10px;">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ $user }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>
+            <a class="dropdown-item" href="{{ url('logout')}}">Logout</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div style="float: left;">
-      <img id="icon-home" src="img/home_icon.png">
-    </div>
-    <p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Calender</p>
-
-    <div style=" position: absolute;  padding-left: 700px; margin-top: -50px;">
-    <img style="width:27%; padding-right: 20px;" src="img/bell.png">
-    <img width="30%" src="img/akun.png"/>
-    </div>
-    <span class="text-nama"><p>Muchammad Muchib</p></span>
     <h1 class="text-white text-center">{{ $data[0]->mata_pelajaran }}</h1>
     <div style="clear: both;"></div>
       <div class="form-group has-search">
@@ -37,18 +46,6 @@
       </div>
   </div>
     <div  id="content-detailkelas-01" >
-      <!-- <div style="text-align: center; padding-top: 50px;">
-        <button style="background: #103156;" type="button" class="btn btn-lg text-white">Materi</button>
-        <button style="background: #11CDEF;" type="button" class="btn btn-lg text-white">Tugas Kelas</button>
-      </div>
-      <div style="margin: 40px; text-align: center;">
-        <button id="btn-tugas" type="button" class="btn text-white bold">Tugas Kelas</button><br>
-        <button style="background: #103156;" id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
-        <button id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
-        <button id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
-        <button id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
-        <button id="btn-tugas" type="button" class="btn text-white">Tugas Kelas</button><br>
-      </div> -->
       @yield('isi')
     </div>
 </div>

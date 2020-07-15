@@ -27,6 +27,8 @@ Route::group(['middleware' => ['cekAdmin']], function () {
     Route::get('delete/{id}', 'Staf\StafController@destroy');
     Route::get('update/{id}', 'Staf\StafController@update');
     Route::post('update', 'Staf\StafController@postUpdate');
+    //search
+    Route::get('cari-siswa', 'Staf\StafController@getSiswa');
     //set sesi status
     Route::post('setstatus', 'Staf\StafController@setStatus');
     Route::post('destroystatus', 'Staf\StafController@destroyStatus');
@@ -51,9 +53,11 @@ Route::group(['middleware' => ['cekSiswa']], function () {
     Route::get('tugas', 'Siswa\SiswaController@tugas');
     Route::get('kelas', 'Siswa\SiswaController@kelas');
     Route::get('profil', 'Siswa\SiswaController@profil');
+    Route::get('kumpul-tugas/{id}', 'Siswa\SiswaController@kumpulTugas');
+    Route::post('kumpul-tugas', 'Siswa\SiswaController@postKumpulTugas');
     // Route::get('kelas-detail/{id}', 'Siswa\SiswaController@detailKelas');
-    Route::get('kelas-detail/{id}/materi', 'Siswa\SiswaController@detailMateri');
-    Route::get('kelas-detail/{id}/tugas', 'Siswa\SiswaController@detailTugas');
+    Route::get('kelas-detail/{id}/materi/{id_mapel}', 'Siswa\SiswaController@detailMateri');
+    Route::get('kelas-detail/{id}/tugas/{id_mapel}', 'Siswa\SiswaController@detailTugas');
     Route::get('calender', 'Siswa\SiswaController@calender');
   });
 });
@@ -68,8 +72,8 @@ Route::group(['middleware' => ['cekGuru']], function () {
     Route::get('tugas', 'Guru\GuruController@tugas');
     Route::get('kelas', 'Guru\GuruController@kelas');
     // Route::get('kelas-detail/{id}', 'Guru\GuruController@detailKelas');
-    Route::get('kelas-detail/{id}/materi', 'Guru\GuruController@detailMateri');
-    Route::get('kelas-detail/{id}/tugas', 'Guru\GuruController@detailTugas');
+    Route::get('kelas-detail/{id}/materi/{id_mapel}', 'Guru\GuruController@detailMateri');
+    Route::get('kelas-detail/{id}/tugas/{id_mapel}', 'Guru\GuruController@detailTugas');
     Route::get('kelas-detail/{id}/tugas-tambah', 'Guru\GuruController@tambahTugas');
     Route::get('kelas-detail/{id}/materi-tambah', 'Guru\GuruController@tambahMateri');
     Route::post('tugas-tambah', 'Guru\GuruController@postTambahTugas');
@@ -82,6 +86,8 @@ Route::group(['middleware' => ['cekGuru']], function () {
 Route::get('login', 'LoginController@login');
 Route::get('logout', 'LoginController@logout');
 Route::post('login', 'LoginController@cekLogin');
+
+Route::get('calender', 'LoginController@calender');
 
 Route::get('tes', 'LoginController@tes');
 

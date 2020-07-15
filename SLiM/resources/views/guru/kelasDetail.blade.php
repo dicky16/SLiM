@@ -12,20 +12,28 @@
        </div>
    </div>
      <!-- search box -->
-    <div style="padding-left: 700px; top: 13px; position: absolute;" >
-    <img style="width:27%; padding-right: 20px;" src="{{ asset('guru/img/bell.png') }}"/>
-    <img class="rounded-circle"width="30%" src="{{ asset('guru/img/1.jpeg') }}"/>
+     <div class="row">
+      <div class="col-1">
+        <h2 style="color : white; ">Home</h2>
+      </div>
+      <div class="col-1 ml-4">
+        <img id="icon-home" src="{{ asset('siswa/img/home_icon.png') }}">
+      </div>
+      <div class="col ml-4">
+        <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Kelas</p></span>
+      </div>
+      <div class="col">
+        <div class="btn-group float-right" style="margin-top: 10px;">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ $user }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>
+            <a class="dropdown-item" href="{{ url('logout')}}">Logout</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <span style="position: absolute; top: 20px; padding-left: 75%;"><p>Muhammad Farraseka</p></span>
-    <div style="clear: both;"></div>
-<!-- icon home  -->
-    <div style="float: left;">
-      <h2 style="color : white; ">Home</h2>
-    </div>
-    <div style="float: left;">
-      <img id="icon-home" src="{{ asset('guru/img/home_icon.png') }}">
-    </div>
-      <p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Kelas {{$data[0]->kelas}}</p>
       <h1 class="text-white text-center">{{$data[0]->mata_pelajaran}}</h1>
       <h3 class="text-white text-center">Kelas {{$data[0]->kelas}}</h3>
     <div style="clear: both;"></div>

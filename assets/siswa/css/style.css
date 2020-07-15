@@ -3,7 +3,6 @@
 */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-
 body {
     font-family: 'Poppins', sans-serif;
     background: #fff;
@@ -337,26 +336,26 @@ toggle button
     }
 
 }
-
-@media (min-width: 576px) {
-  #content{
-    padding: 5px;
-    min-height: 100vh;
-    transition: all 0.3s;
-  }
-  #sidebar {
-      margin-left: -250px;
-  }
-  #sidebar.active {
-      margin-left: 0;
-  }
-  #sidebarCollapse span {
+@media (max-width: 960px) {
+    #content{
+      padding: 22px;
+      min-height: 100vh;
+      transition: all 0.3s;
+    }
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+    #main-search{
+      width: 100%;
+    }
+    .text-nama{
       display: none;
-  }
-  #main-search{
-    width: 100%;
-  }
-  .text-nama{
-    display: none;
-  }
+    }
+
 }

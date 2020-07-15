@@ -13,7 +13,7 @@
       </div>
   </div>
 <!-- icon home  -->
-    <div style="float: left;">
+    <!-- <div style="float: left;">
       <h2 style="color : white; ">Home</h2>
     </div>
     <div style="float: left;">
@@ -26,7 +26,29 @@
     <img width="30%" src="{{ asset('siswa/img/.png') }}"/>
     </div>
     <span class="text-nama"><p>Muchammad Muchib</p></span>
-    <div style="clear: both;"></div>
+    <div style="clear: both;"></div> -->
+    <div class="row">
+      <div class="col-1">
+        <h2 style="color : white; ">Home</h2>
+      </div>
+      <div class="col-1 ml-4">
+        <img id="icon-home" src="{{ asset('siswa/img/home_icon.png') }}">
+      </div>
+      <div class="col ml-4">
+        <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Absensi</p></span>
+      </div>
+      <div class="col">
+        <div class="btn-group float-right" style="margin-top: 10px;">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ $user }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>
+            <a class="dropdown-item" href="{{ url('logout')}}">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
       <!-- content dasboard -->
       <?php
       date_default_timezone_set("Asia/Jakarta");
@@ -103,12 +125,12 @@
     <tr>
       <td>{{ $absen->date }}</td>
       <td>{{ $absen->time_in }}</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
       <td>{{ $absen->time_out }}</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     @endforeach
   </tbody>

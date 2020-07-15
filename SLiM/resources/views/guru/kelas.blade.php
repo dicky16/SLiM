@@ -12,21 +12,28 @@
         </div>
     </div>
      <!-- search box -->
-    <div style="padding-left: 700px; top: 13px; position: absolute;" >
-    <img style="width:27%; padding-right: 20px;" src="{{ asset('siswa/img/bell.png') }}"/>
-    <img class="rounded-circle"width="30%" src="{{ asset('guru/img/1.jpeg') }}"/>
+      <div class="row">
+      <div class="col-1">
+        <h2 style="color : white; ">Home</h2>
+      </div>
+      <div class="col-1 ml-4">
+        <img id="icon-home" src="{{ asset('siswa/img/home_icon.png') }}">
+      </div>
+      <div class="col ml-4">
+        <span><p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Kelas</p></span>
+      </div>
+      <div class="col">
+        <div class="btn-group float-right" style="margin-top: 10px;">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ $user }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url('siswa/profil')}}">Profile</a>
+            <a class="dropdown-item" href="{{ url('logout')}}">Logout</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <span style="position: absolute; top: 20px; padding-left: 75%;"><p>{{ $user }}</p></span>
-    <div style="clear: both;"></div>
-<!-- icon home  -->
-    <div style="float: left;">
-      <h2 style="color : white; ">Home</h2>
-    </div>
-    <div style="float: left;">
-      <img id="icon-home" src="{{ asset('siswa/img/home_icon.png') }}">
-    </div>
-      <p style="padding-top: 22px; font-size: 12px;">&nbsp;&nbsp; &nbsp;Home &nbsp; - &nbsp; Tugas Siswa</p>
-    <div style="clear: both;"></div><br><br>
 
     <!-- Content Paragraf 1-->
     <hr>
@@ -37,11 +44,12 @@
         <div class="col-sm-4" style="margin-top: 10px;">
           <div class="card">
             <div class="card-body">
+              <h5 id="text-content" align="center" class="margin-top">{{ $kelas->mata_pelajaran }}</h5>
               <h5 id="text-content" align="center" class="margin-top">{{ $kelas->kelas }}</h5>
               <label class="mt-0">
               <h5 align="center" class="card-title">{{ $kelas->hari}}, {{$kelas->jam}}</h5>
               </label>
-              <a href="kelas-detail/{{$kelas->id}}/materi"><button type="button" class="btn btn-info float-right">Cek Kelas</button></a>
+              <a href="kelas-detail/{{$kelas->id}}/materi/{{$kelas->id_mapel}}"><button type="button" class="btn btn-info float-right">Cek Kelas</button></a>
             </div>
           </div>
         </div><br>

@@ -1,0 +1,37 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #EFF7FE;
+    padding-top: 15px;
+}
+.main-section{
+    border:1px solid #138496;
+    background-color: #fff;
+    border-radius: 20px;
+}
+.profile-header{
+    background-color: #17a2b8;
+    height:150px;
+    border-radius: 20px;
+}
+.user-detail{
+    margin:-50px 0px 30px 0px;
+}
+.user-detail img{
+    height:100px;
+    width:100px;
+}
+.user-detail h5{
+    margin:15px 0px 5px 0px;
+}
+.user-social-detail{
+    padding:15px 0px;
+    background-color: #17a2b8;
+        border-radius: 20px;
+}
+.user-social-detail a i{
+    color:#fff;
+    font-size:23px;
+    padding: 0px 5px;
+}

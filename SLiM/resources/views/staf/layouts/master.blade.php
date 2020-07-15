@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{{ asset('staf/css/style.css') }}">
     <script src="https://kit.fontawesome.com/2ee1f2fc44.js" crossorigin="anonymous"></script>
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script> -->
   </head>
   <body>
@@ -52,7 +51,7 @@
               </div> -->
 
                 <div class="sidebar-header">
-                    <h3 style="color: black">SLiM</h3>
+                    <a style="text-decoration: none;" href=""><img src="{{ asset('siswa/img/judul.png') }}"></a>
                 </div>
                 <ul class="list-unstyled components">
                       <img src="{{ asset('staf/img/monitor.png') }}" class="mr-3 ml-3">
@@ -70,7 +69,6 @@
                           <a class="dropdown-item" href="{{ url('staf/admin') }}">Admin</a>
                         </div>
                       </div>
-                      <br>
                       <br>
                       <img src="{{ asset('staf/img/kelas.png') }}" class="mr-4 ml-3">
                       <a href="{{ url('staf/pelajaran') }}" style="color: black">Jadwal Pelajaran</a>

@@ -4,15 +4,15 @@
 
 @section('content')
 <div class="container">
-
-  <div id="content" class="bg-dark">
-
-  <div style="position: absolute; margin-left: -130px; margin-top: 15px;" class="row">
+<div id="content" class="bg-dark">
+  <div style="position: absolute; margin-left: -130px; margin-top: 8px;" class="row">
+    <div class="njajal">
     <div class="col">
      <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
           <i class="glyphicon glyphicon-align-left fa fa-bars fa-2x"></i>
           <!-- <img src="img/menu_toggle.png" alt=""> -->
       </button>
+      </div>
       </div>
     </div>
 <!-- icon home  -->
@@ -20,11 +20,11 @@
       <div class="col-1">
         <h2 style="color : white; ">Home</h2>
       </div>
-      <div class="col-1 ml-4">
-        <img style="  width:20px; margin-left: 40px; margin-top: 20px;" src="{{ asset('siswa/img/home_icon.png') }}">
+      <div class="col-0 ml-4">
+        <img class="img-akun" src="{{ asset('siswa/img/home_icon.png') }}">
       </div>
-      <div class="col ml-4">
-        <span><p style="padding-top: 22px;  font-size: 12px;">&nbsp;&nbsp; &nbsp;Monitor Kelas</p></span>
+      <div class="col ml-2">
+        <span><p class="text-home">Monitor Kelas</p></span>
       </div>
       <div class="col">
         <div class="btn-group float-right" style="margin-top: 10px;">
@@ -38,13 +38,11 @@
         </div>
       </div>
     </div>
-    <br>
 
       <h2 style="color : white;">Status</h2>
-
       <div class="row">
 
-        <div class="col-sm-3 c">
+        <div class="col-sm-3">
           <div class="card">
             <div class="card-body">
               <h5 align="center" class="card-title">Lampu Depan</h5>
@@ -94,7 +92,6 @@
         </div>
 
       </div>
-
   </div>
 </div>
 @endsection

@@ -91,7 +91,7 @@ class GuruController
       ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
       ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
       ->join('users', 'jadwal.id_guru', '=', 'users.id')
-      ->select('jadwal.id','jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->select('jadwal.id','jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name', 'mapel.id as id_mapel')
       ->where('id_guru', Auth::user()->id)
       ->get();
       // dd($data);
@@ -130,33 +130,42 @@ class GuruController
       return view('guru/kelasDetail', ['data' => $data]);
     }
 
-    public function detailMateri($id)
+    public function detailMateri($id, $id_mapel)
     {
       $data = DB::table('jadwal_pelajaran as jadwal')
       ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
       ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
       ->join('users', 'jadwal.id_guru', '=', 'users.id')
-      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name', 'jadwal.id', 'mapel.id as id_mapel')
       ->where('jadwal.id', $id)
       ->get();
 
-      $materi = DB::table('materi')->get();
-      // dd($materi[0]);
+      $materi = DB::table('materi')
+      ->where('id_mata_pelajaran', $id_mapel)
+      ->get();
+
+      // dd($materi[0]->id_mata_pelajaran);
 
       return view('guru/kelasDetailMateri', ['data' => $data, 'materi' => $materi]);
     }
 
-    public function detailTugas($id)
+    public function detailTugas($id, $id_mapel)
     {
       $data = DB::table('jadwal_pelajaran as jadwal')
       ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
       ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
       ->join('users', 'jadwal.id_guru', '=', 'users.id')
-      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->select('jadwal.id', 'jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name', 'mapel.id as id_mapel')
       ->where('jadwal.id', $id)
       ->get();
       // dd($data);
-      return view('guru/kelasDetailTugas', ['data' => $data]);
+      $tugas = DB::table('tugas')
+      ->join('tabel_mata_pelajaran as mapel', 'tugas.id_mata_pelajaran', '=', 'mapel.id')
+      ->select('tugas.*', 'mapel.mata_pelajaran')
+      ->where('id_mata_pelajaran', $id_mapel)
+      ->get();
+      // dd($tugas);
+      return view('guru/kelasDetailTugas', ['data' => $data, 'tugas' => $tugas] );
     }
 
     public function tambahTugas($id)

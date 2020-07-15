@@ -1,8 +1,12 @@
 @extends('siswa/layouts/master')
 @section('judul', 'siswa')
 @section('content')
+
+
+
 <div class="container">
-<div style="padding-top: 6px;" id="content" class="background-siswa">
+
+<div id="content" class="background-siswa">
   <div style="position: absolute; margin-left: -130px; margin-top: 15px;" class="row">
     <div class="col">
      <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
@@ -40,15 +44,18 @@
       <h3 style="color : white;">Kelas</h3>
 
       <div class="row text-siswa">
-        <div class="col-md-3 col-sm-6 mt-3 col-xs-6">
+        @foreach($kelas as $t)
+        <div class="col-sm-3">
           <div class="card">
             <div class="card-body">
-              <h5 id="text-matkul">Bahasa Indonesia</h5>
-              <h5>Senin, 03-07-2020</h5>
+              <h5 id="text-matkul">{{$t->mata_pelajaran}}</h5>
+              <h5>{{ $t->hari}}, {{$t->jam}}</h5>
+              <a href="siswa/kumpul-tugas/{{$t->id}}" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>
             </div>
           </div>
         </div>
-        <div class="col-md-3 col-sm-6 mt-3 col-xs-6">
+        @endforeach
+        <!-- <div class="col-md-3 col-sm-6 mt-3 col-xs-6">
           <div class="card">
             <div class="card-body">
               <h5 id="text-matkul">Bahasa Indonesia</h5>
@@ -71,7 +78,7 @@
               <h5>Senin, 03-07-2020</h5>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <h3 style="color : white;">Jadwal Hari Ini</h3>
@@ -89,27 +96,15 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($jadwal as $j)
                 <tr>
-                  <th scope="row">KD001</th>
-                  <td>Bahasa Indonesia</td>
-                  <td>12A</td>
-                  <td>07.00-08.00</td>
-                  <td>Pak Guru</td>
+                  <td>{{$j->hari}}</td>
+                  <td>{{$j->mata_pelajaran}}</td>
+                  <td>{{$j->kelas}}</td>
+                  <td>{{$j->jam}}</td>
+                  <td>{{$j->name}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">KD001</th>
-                  <td>Bahasa Indonesia</td>
-                  <td>12A</td>
-                  <td>07.00-08.00</td>
-                  <td>Pak Guru</td>
-                </tr>
-                <tr>
-                  <th scope="row">KD001</th>
-                  <td>Bahasa Indonesia</td>
-                  <td>12A</td>
-                  <td>07.00-08.00</td>
-                  <td>Pak Guru</td>
-                </tr>
+                @endforeach
               </tbody>
             </table>
 
@@ -121,7 +116,8 @@
       <!-- <h3><a style="text-decoration: none; float: right;" href="" class="btn btn-primary">Lihat Semua</a></h3>  -->
       <div style="clear: both;"></div>
       <div class="row text-siswa">
-        <div class="col-sm-3">
+
+        <!-- <div class="col-sm-3">
           <div class="card">
             <div class="card-body">
               <h5 id="text-matkul">Bahasa Indonesia</h5>
@@ -129,8 +125,33 @@
               <a href="" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>
             </div>
           </div>
+        </div> -->
+        @if($tugas != null)
+        @foreach($tugas as $t)
+        <div class="col-sm-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 id="text-matkul">{{$t->mata_pelajaran}}</h5>
+              <h5>{{$t->deadline}}</h5>
+              <a href="{{url('siswa/kumpul-tugas/')}}/{{$t->id}}" style="text-decoration: none; color: #ff3333;"><h6>Lihat</h6></a>
+            </div>
+          </div>
         </div>
+        @endforeach
+        @else
+        <div class="col-sm-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 id="text-matkul">Tugas sudah selesai semua!</h5>
+            </div>
+          </div>
+        </div>
+        @endif
+
       </div>
+
   </div>
+
 </div>
+
 @endsection

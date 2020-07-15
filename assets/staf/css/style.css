@@ -3,7 +3,6 @@
 */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-
 body {
     font-family: 'Poppins', sans-serif;
     background: #fff;
@@ -52,6 +51,7 @@ a, a:hover, a:focus {
     display: flex;
     align-items: stretch;
 }
+
 
 #sidebar {
     min-width: 250px;
@@ -231,17 +231,59 @@ input:checked + .slider:before {
   margin-top: 20px;
 }
 
+.img-akun {
+  width:20px; margin-left: 75px; margin-top: 20px;
+}
+.text-home{
+  padding-top: 22px;
+  font-size: 12px;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 @media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
+    .njajal{
+      position: absolute;
+      margin-left: 100px;
     }
+    #sidebar {
+      margin-left:-240px;
+      min-width: 100px;
+      max-width: 250px;
+      background: #fff;
+      color: #fff;
+      transition: all 0.3s;
+    }
+    #content {
+    padding: -10px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
     #sidebar.active {
         margin-left: 0;
     }
     #sidebarCollapse span {
         display: none;
     }
+    .row .col-1{
+      display: none;
+    }
+    .row .col-sm-3{
+      top: 10px;
+      margin: 3px;
+      padding: 3px;
+    }
+    .img-akun{
+      display: none;
+    }
+    .text-home{
+      font-size: 15px !important;
+      padding-top: 22px;
+      font-size: 12px;
+      padding-top: 80px;
+      /*margin-right: -100px;*/
+
+    }
+
 }

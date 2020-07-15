@@ -35,13 +35,19 @@ class LoginController extends Controller
       // dd($user);
       return redirect('staf');
     } else {
-      return redirect()->back();
+      return redirect()->back()->with('status', 'salah!');;
     }
   }
   public function logout()
   {
     Auth::logout();
     return redirect('login');
+  }
+
+  public function calender()
+  {
+    // Auth::logout();
+    return view('calender');
   }
 
   public function tes()

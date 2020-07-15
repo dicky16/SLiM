@@ -7,6 +7,8 @@
 
     <!--Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <body>
 <div class="container">
@@ -48,6 +50,14 @@
 		</div>
 	</div>
 </div>
-
+@if (session('status'))
+    <script type="text/javascript">
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: 'Email atau Password salah!',
+			})
+    </script>
+@endif
 </body>
 </html>

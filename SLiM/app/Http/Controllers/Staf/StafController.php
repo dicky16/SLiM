@@ -252,6 +252,16 @@ class StafController
       return view('staf/tambahSiswa', compact(['kelas', 'smt']));
     }
 
+    public function getSiswa(Request $request)
+    {
+      $key = $request->input('key');
+      // dd($key);
+      $data = DB::table('users')->where('name', 'LIKE', '%'.$key.'%')
+      ->get();
+      // dd($data);
+      return view('staf/aturSiswa', ['data' => $data]);
+    }
+
     public function postTambahSiswa(Request $request)
     {
       $valid = $request->validate([

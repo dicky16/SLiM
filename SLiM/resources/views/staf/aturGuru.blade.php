@@ -7,7 +7,7 @@
 <div class="container">
   <div id="content" class="bg-dark">
 
-  <div style="position: absolute; margin-left: -130px; margin-top: 15px;" class="row">
+  <div style="position: absolute; margin-left: -130px; margin-top: 8px;" class="row">
     <div class="col">
      <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
           <i class="glyphicon glyphicon-align-left fa fa-bars fa-2x"></i>
@@ -21,10 +21,10 @@
         <h2 style="color : white; ">Home</h2>
       </div>
       <div class="col-1 ml-4">
-        <img style="  width:20px; margin-left: 40px; margin-top: 20px;" src="{{ asset('siswa/img/home_icon.png') }}">
+        <img style="  width:20px; margin-left: 75px; margin-top: 20px;" src="{{ asset('siswa/img/home_icon.png') }}">
       </div>
       <div class="col ml-4">
-        <span><p style="padding-top: 22px;  font-size: 12px;">&nbsp;&nbsp; &nbsp;User management &nbsp; - &nbsp;Guru</p></span>
+        <span><p style="padding-top: 22px;  font-size: 12px;">User management &nbsp; - &nbsp;Guru</p></span>
       </div>
       <div class="col">
         <div class="btn-group float-right" style="margin-top: 10px;">
@@ -56,8 +56,10 @@
             <a href="add"><button class="btn btn-primary float-right"><i class="fas fa-plus"></i></button></a>
           </div>
         </div>
+
         <div class="row">
-          <table class="table">
+        <div class="table-responsive">
+        <table class="table">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">NIS</th>
@@ -70,15 +72,15 @@
                 </tr>
               </thead>
               <tbody>
+                <?php $i = 1; ?>
+                @foreach ($data as $dt)
                 <tr>
-                  <?php $i = 1; ?>
-                  @foreach($data as $dt)
                   <th scope="row">{{$i}}</th>
                   <td>{{$dt->name}}</td>
-                  <td>kelas</td>
+                  <td>Otto</td>
                   <td>@mdo</td>
                   <td>{{$dt->email}}</td>
-                  <td>pass</td>
+                  <td>-</td>
                   <td>
                     <a href="delete/{{ $dt->id}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a> |
                     <a href="update/{{ $dt->id}}"><button class="btn btn-success"><i class="far fa-edit"></i></button></a>
@@ -87,10 +89,10 @@
                 <?php $i++; ?>
                 @endforeach
               </tbody>
-            </table>
-
-        </div>
+        </table>
       </div>
+    </div>
+  </div>
 
   </div>
 </div>

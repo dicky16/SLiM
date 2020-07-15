@@ -7,7 +7,9 @@
     <!-- w3school -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{{ asset('siswa/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('siswa/css/profil.css') }}">
     <script src="https://kit.fontawesome.com/2ee1f2fc44.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <div class="wrapper">
@@ -38,7 +40,7 @@
                       <br>
                       <br>
                       <img src="{{ asset('siswa/img/kalender.png') }}" class="mr-3 ml-3">
-                      <a href="{{ url('siswa/kalender')}}" style="color: black">Calender</a>
+                      <a href="{{ url('siswa/calender')}}" style="color: black">Calender</a>
                       <br>
                       <br>
                       <img src="{{ asset('siswa/img/kelas.png') }}" class="mr-3 ml-3">

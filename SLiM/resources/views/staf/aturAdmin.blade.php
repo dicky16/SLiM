@@ -7,7 +7,7 @@
 <div class="container">
   <div id="content" class="bg-dark">
 
-  <div style="position: absolute; margin-left: -130px; margin-top: 15px;" class="row">
+  <div style="position: absolute; margin-left: -130px; margin-top: 8px;" class="row">
     <div class="col">
      <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
           <i class="glyphicon glyphicon-align-left fa fa-bars fa-2x"></i>
@@ -21,10 +21,10 @@
         <h2 style="color : white; ">Home</h2>
       </div>
       <div class="col-1 ml-4">
-        <img style="  width:20px; margin-left: 40px; margin-top: 20px;" src="{{ asset('siswa/img/home_icon.png') }}">
+        <img style="  width:20px; margin-left: 75px; margin-top: 20px;" src="{{ asset('siswa/img/home_icon.png') }}">
       </div>
       <div class="col ml-4">
-        <span><p style="padding-top: 22px;  font-size: 12px;">&nbsp;&nbsp; &nbsp;User management &nbsp; - &nbsp;Admin</p></span>
+        <span><p style="padding-top: 22px;  font-size: 12px;">User management &nbsp; - &nbsp;Admin</p></span>
       </div>
       <div class="col">
         <div class="btn-group float-right" style="margin-top: 10px;">
