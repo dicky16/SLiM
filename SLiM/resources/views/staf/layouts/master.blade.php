@@ -62,7 +62,7 @@
                       <br>
                       <div class="dropdown">
                         <img src="{{ asset('staf/img/user.png') }}" class="ml-3">
-                        <button class="btn dropdown-toggle float-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn dropdown-toggle float-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 1px;">
                           Management User
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -76,7 +76,7 @@
                       <a href="{{ url('staf/pelajaran') }}" style="color: black">Jadwal Pelajaran</a>
                       <br><br>
                       <img src="{{ asset('staf/img/calendar.png') }}" class="mr-4 ml-3">
-                      <a href="index.php" style="color: black">Calendar</a>
+                      <a href="{{ url('staf/calender')}}" style="color: black">Calendar</a>
                 </ul>
 
             </nav>
@@ -203,41 +203,6 @@
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');
                  });
-
-                  //ajax form tambah
-                  // $("#tambah").click(function(e) {
-                  //   e.preventDefault();
-                  //   var name = $("#name").val();
-                  //   var email = $("#email").val();
-                  //   var password = $("#password").val();
-                  //   var l = document.getElementById("level");
-                  //   var level = l.options[l.selectedIndex].value;
-                  //   if(name == "" || level == "" || email == "" || password == "") {
-                  //     alert('data tidak boleh kosong')
-                  //   } else {
-                  //       $.ajax({
-                  //         type: 'POST',
-                  //         url:"{{ url('/staf/add') }}",
-                  //         data:{name:name,email:email,password:password,level:level},
-                  //         dataType: 'json',
-                  //         success:function(data) {
-                  //           if(data.status == '1') {
-                  //             Swal.fire(
-                  //               'Sukses tambah data',
-                  //               'success'
-                  //             )
-                  //             location.reload();
-                  //           } else {
-                  //             Swal.fire({
-                  //               icon: 'error',
-                  //               title: 'Oops...',
-                  //               text: 'Gagal tambah data',
-                  //             })
-                  //           }
-                  //         }
-                  //       });
-                  //   }
-                  // });
 
                   //ajax edit user
                   $("#edit").click(function(e) {

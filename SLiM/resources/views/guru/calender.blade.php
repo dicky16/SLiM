@@ -1,5 +1,5 @@
 @extends('guru/layouts/master')
-  @section('judul', 'tugas')
+  @section('judul', 'kalender')
   @section('content')
   <div class="container">
                 <div id="content" class="background-siswa">

@@ -1,4 +1,4 @@
-@extends('siswa/layouts/master')
+@extends('staf/layouts/master')
   @section('judul', 'Kalender')
   @section('content')
   <div class="container">

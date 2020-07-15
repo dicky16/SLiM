@@ -2,7 +2,7 @@
 
 @extends('staf.layouts.master')
 
-@section('judul', 'guru')
+@section('judul', 'user')
 
 @section('content')
 

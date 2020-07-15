@@ -40,7 +40,6 @@
   <!-- Tabel -->
   <div style="padding-top: 6px;" id="content-absensi" class="table-responsive">
   <p></p><h2 style="float: left;">Jadwal Pelajaran</h2><br>
-  <button style="margin-top: -8px; float: right;" type="button" class="btn btn-outline-secondary">Export Jadwal</button>
   <div style="clear: both;"></div><br>
   <table class="table container">
     <thead>

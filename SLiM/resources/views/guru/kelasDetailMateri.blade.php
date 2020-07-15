@@ -6,7 +6,7 @@
     <a href="{{ url('guru/kelas-detail') }}/{{$data[0]->id}}/tugas/{{$data[0]->id_mapel}}"><button style="background: #11CDEF;" type="button" class="btn btn-lg text-white">Tugas Kelas</button></a>
   </div>
   <div style="text-align: center; margin-top: 30px;">
-    <a href="materi-tambah"><button style="background: orange;" type="button" class="btn btn-lg text-white">Upload Materi</button></a>
+    <a href="{{ url('guru/kelas-detail') }}/{{$data[0]->id}}/materi-tambah"><button style="background: orange;" type="button" class="btn btn-lg text-white">Upload Materi</button></a>
   </div>
   <div style="margin: 40px; text-align: center;">
     @foreach($materi as $m)

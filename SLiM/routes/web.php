@@ -28,6 +28,7 @@ Route::group(['middleware' => ['cekAdmin']], function () {
     Route::get('delete/{id}', 'Staf\StafController@destroy');
     Route::get('update/{id}', 'Staf\StafController@update');
     Route::post('update', 'Staf\StafController@postUpdate');
+    Route::get('calender', 'Staf\StafController@calender');
     //search
     Route::get('cari-siswa', 'Staf\StafController@getSiswa');
     //set sesi status

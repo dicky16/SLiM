@@ -10,7 +10,6 @@
     <div class="col">
      <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
           <i class="glyphicon glyphicon-align-left fa fa-bars fa-2x"></i>
-          <!-- <img src="img/menu_toggle.png" alt=""> -->
       </button>
       </div>
       </div>

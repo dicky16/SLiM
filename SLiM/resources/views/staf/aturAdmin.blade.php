@@ -1,5 +1,5 @@
 @extends('staf.layouts.master')
-@section('judul', 'user')
+@section('judul', 'admin')
 @section('content')
 
 <div class="container">

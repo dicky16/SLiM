@@ -42,50 +42,20 @@
       <hr>
       <div class="row">
 
-        <div class="col-sm-3">
+        @foreach($data as $kelas)
+        <div class="col-sm-4" style="margin-top: 10px;">
           <div class="card">
             <div class="card-body">
-              <h5 id="text-content" align="center" class="margin-top">KELAS 12 A</h5>
+              <h5 id="text-content" align="center" class="margin-top">{{ $kelas->mata_pelajaran }}</h5>
+              <h5 id="text-content" align="center" class="margin-top">{{ $kelas->kelas }}</h5>
               <label class="mt-0">
-              <h5 align="center" class="card-title">Senin, 07.15 - 08.25</h5>
+              <h5 align="center" class="card-title">{{ $kelas->hari}}, {{$kelas->jam}}</h5>
               </label>
-              <button type="button" class="btn btn-info float-right">Selanjutnya</button>
+              <a href="kelas-detail/{{$kelas->id}}/materi/{{$kelas->id_mapel}}"><button type="button" class="btn btn-info float-right">Cek Kelas</button></a>
             </div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-content" align="center" class="margin-top">KELAS 12 B</h5>
-              <label class="mt-0">
-              <h5 align="center" class="card-title">Selasa, 07.15 - 08.25</h5>
-              </label>
-              <button type="button" class="btn btn-info float-right">Selanjutnya</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-content" align="center" class="margin-top">KELAS 12 C</h5>
-              <label class="mt-0">
-              <h5 align="center" class="card-title">Rabu, 07.15 - 08.25</h5>
-              </label>
-              <button type="button" class="btn btn-info float-right">Selanjutnya</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-content" align="center" class="margin-top">KELAS 12 D</h5>
-              <label class="mt-0">
-              <h5 align="center" class="card-title">Kamis, 07.15 - 08.25</h5>
-              </label>
-              <button type="button" class="btn btn-info float-right">Selanjutnya</button>
-            </div>
-          </div>
-        </div>
+        </div><br>
+        @endforeach
      </div>
 
      <br>
@@ -93,87 +63,34 @@
       <h2 style="color : white;">Jadwal Mengajar</h2>
       <hr>
       <table class="table" style="background-color: white;">
-              <thead>
-              <tr>
-                <th scope="col">Hari</th>
-                <th scope="col">Mata Pelajaran</th>
-                <th scope="col">kelas</th>
-                <th scope="col">Jam</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Senin</th>
-                <td>MTK</td>
-                <td>12 A</td>
-                <td>07.00 - 09.15</td>
-              </tr>
-              <tr>
-                <th scope="row">Selasa</th>
-                <td>MTK</td>
-                <td>12 C</td>
-                <td>10.00 - 11.00</td>
-              </tr>
-              <tr>
-                <th scope="row">Rabu</th>
-                <td>FISIKA</td>
-                <td>12 B</td>
-                <td>07.00 - 09.15</td>
-              </tr>
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-info float-right"><a href="jadwal.html">Lihat Jadwal</a></button>
+               <thead>
+               <tr>
+                 <th scope="col">No.</th>
+                 <th scope="col">Hari</th>
+                 <th scope="col">Mata Pelajaran</th>
+                 <th scope="col">kelas</th>
+                 <th scope="col">Jam</th>
+               </tr>
+             </thead>
+             <tbody>
+               <?php $no = 1; ?>
+               @foreach($data as $d)
+               <tr>
+                 <td>{{ $no }}</td>
+                 <td>{{ $d->hari }}</td>
+                 <td>{{ $d->mata_pelajaran }}</td>
+                 <td>{{ $d->kelas }}</td>
+                 <td>{{ $d->jam }}</td>
+               </tr>
+               <?php $no++; ?>
+               @endforeach
+             </tbody>
+         </table>
+        <button type="button" class="btn btn-info float-right"><a href="guru/jadwal">Lihat Jadwal</a></button>
       <br>
 
        <hr>
-        <h2 style="color: white;">Tugas Siswa</h2>
-      <hr>
-        <div class="row">
-        <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-content" align="center" class="margin-top">MTK</h5>
-              <label class="mt-0">
-              <h5 align="center" class="card-title">Senin, 07.15 - 08.25</h5>
-              </label>
-              <button type="button" class="btn btn-info float-right">Cek Tugas</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-content" align="center" class="margin-top">BIOLOGI</h5>
-              <label class="mt-0">
-              <h5 align="center" class="card-title">Selasa, 07.15 - 08.25</h5>
-              </label>
-              <button type="button" class="btn btn-info float-right">Cek Tugas</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-content" align="center" class="margin-top">FISIKA</h5>
-              <label class="mt-0">
-              <h5 align="center" class="card-title">Rabu, 07.15 - 08.25</h5>
-              </label>
-              <button type="button" class="btn btn-info float-right">Cek Tugas</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="text-content" align="center" class="margin-top">KIMIA</h5>
-              <label class="mt-0">
-              <h5 align="center" class="card-title">Kamis, 07.15 - 08.25</h5>
-              </label>
-              <button type="button" class="btn btn-info float-right">Cek Tugas</button>
-            </div>
-          </div>
-        </div>
-     </div>
+
 
   </div>
 </div>

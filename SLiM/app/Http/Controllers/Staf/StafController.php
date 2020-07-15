@@ -18,21 +18,6 @@ class StafController
       return view('staf/profil');
     }
 
-    public function tesdb()
-    {
-      $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/FirebaseKey.json');
-        $firebase = (new Factory)
-            ->withServiceAccount($serviceAccount)
-            ->create();
-        $database = $firebase->getDatabase();
-        $ref = $database->getReference('Subjects');
-        $key = $ref->push()->getKey();
-        $ref->getChild($key)->set([
-            'SubjectName' => 'Laravel'
-        ]);
-        return $key;
-    }
-
     public function setAc()
     {
       session(['statusAc' => 'checked']);
@@ -148,8 +133,14 @@ class StafController
 
     public function getAturSiswa()
     {
-      $siswa = User::where('level', 'siswa')->get();
+      $siswa = User::where('level', 'siswa')
+      ->get();
       return view('staf/aturSiswa', ['data' => $siswa]);
+    }
+
+    public function calender()
+    {
+      return view('staf/calender');
     }
 
     public function getAturAdmin()

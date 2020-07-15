@@ -10,7 +10,22 @@ class GuruController
 {
     public function index()
     {
-      return view('guru/index');
+      $data = DB::table('jadwal_pelajaran as jadwal')
+      ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
+      ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
+      ->join('users', 'jadwal.id_guru', '=', 'users.id')
+      ->select('jadwal.id','jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name', 'mapel.id as id_mapel')
+      ->where('id_guru', Auth::user()->id)
+      ->get();
+      // dd($data);
+      $jadwal = DB::table('jadwal_pelajaran as jadwal')
+      ->join('tabel_kelas as kelas', 'jadwal.id_kelas', '=', 'kelas.id')
+      ->join('tabel_mata_pelajaran as mapel', 'jadwal.id_mata_pelajaran', '=', 'mapel.id')
+      ->join('users', 'jadwal.id_guru', '=', 'users.id')
+      ->select('jadwal.hari','kelas.kelas','mapel.mata_pelajaran','jadwal.jam','users.name')
+      ->where('id_guru', Auth::user()->id)
+      ->get();
+      return view('guru/index', compact('data', 'jadwal'));
     }
 
     public function absensi()

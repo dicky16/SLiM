@@ -38,7 +38,6 @@
     <hr>
      <div class="row">
       <div class="col md-6"><h2 style="color : white;">Jadwal Mengajar</h2> </div>
-      <div class="col md-6"><button type="button" class="btn btn-info float-right">Export Jadwal</button></div>
      </div>
     <hr>
 

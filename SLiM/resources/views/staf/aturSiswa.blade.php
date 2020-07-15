@@ -82,9 +82,9 @@
                   <th scope="row">{{$i}}</th>
                   <td>{{$dt->name}}</td>
                   <td>kelas</td>
-                  <td>@mdo</td>
+                  <td>{{$dt->id_semester}}</td>
                   <td>{{$dt->email}}</td>
-                  <td>pass</td>
+                  <td>-</td>
                   <td>
                     <a href="delete/{{ $dt->id}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a> |
                     <a href="update/{{ $dt->id}}"><button class="btn btn-success"><i class="far fa-edit"></i></button></a>
